@@ -1,0 +1,53 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+docs/
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+
+# Test coverage
+coverage/
+.coverage
+.pytest_cache/
+
+# Temporary files
+tmp/
+temp/

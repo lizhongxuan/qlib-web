@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 数据库
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: qlib_web
+      POSTGRES_USER: qlib_user
+      POSTGRES_PASSWORD: qlib_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qlib_user -d qlib_web"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis 缓存
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # FastAPI 后端
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://qlib_user:qlib_password@postgres:5432/qlib_web
+      - REDIS_URL=redis://redis:6379/0
+      - DEBUG=True
+      - LOG_LEVEL=INFO
+      - SECRET_KEY=your-secret-key-change-in-production
+      - QLIB_DATA_PATH=/app/qlib_data
+    volumes:
+      - ./backend:/app
+      - qlib_data:/app/qlib_data
+      - ./logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Vue.js 前端
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Celery Worker (可选)
+  celery:
+    build: ./backend
+    command: celery -A app.core.celery worker --loglevel=info
+    environment:
+      - DATABASE_URL=postgresql://qlib_user:qlib_password@postgres:5432/qlib_web
+      - REDIS_URL=redis://redis:6379/0
+      - QLIB_DATA_PATH=/app/qlib_data
+    volumes:
+      - ./backend:/app
+      - qlib_data:/app/qlib_data
+      - ./logs:/app/logs
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  qlib_data:

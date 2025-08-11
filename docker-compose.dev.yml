@@ -1,0 +1,62 @@
+# 开发环境 Docker Compose 配置
+version: '3.8'
+
+services:
+  # 开发环境数据库
+  postgres-dev:
+    image: postgres:14-alpine
+    environment:
+      POSTGRES_DB: qlib_web_dev
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+
+  # 开发环境Redis
+  redis-dev:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_dev_data:/data
+
+  # 后端开发服务（热重载）
+  backend-dev:
+    build: ./backend
+    ports:
+      - "8001:8000"
+    environment:
+      - DATABASE_URL=postgresql://dev_user:dev_password@postgres-dev:5432/qlib_web_dev
+      - REDIS_URL=redis://redis-dev:6379/0
+      - DEBUG=True
+      - LOG_LEVEL=DEBUG
+      - SECRET_KEY=dev-secret-key
+    volumes:
+      - ./backend:/app
+      - qlib_dev_data:/app/qlib_data
+    depends_on:
+      - postgres-dev
+      - redis-dev
+    restart: unless-stopped
+
+  # 前端开发服务（热重载）
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend-dev
+
+volumes:
+  postgres_dev_data:
+  redis_dev_data:
+  qlib_dev_data:

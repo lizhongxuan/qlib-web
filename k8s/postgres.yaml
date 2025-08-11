@@ -1,0 +1,295 @@
+# PostgreSQL 主库部署
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-primary
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-primary
+spec:
+  serviceName: postgres-primary
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qlib-web
+      component: postgres-primary
+  template:
+    metadata:
+      labels:
+        app: qlib-web
+        component: postgres-primary
+    spec:
+      securityContext:
+        fsGroup: 999
+        runAsUser: 999
+        runAsGroup: 999
+        runAsNonRoot: true
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+          name: postgres
+        env:
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: qlib-web-config
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: qlib-web-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: qlib-web-secrets
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_REPLICATION_USER
+          value: "repl_user"
+        - name: POSTGRES_REPLICATION_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: qlib-web-secrets
+              key: POSTGRES_REPL_PASSWORD
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        - name: postgres-config
+          mountPath: /etc/postgresql/postgresql.conf
+          subPath: postgresql.conf
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - exec pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h 127.0.0.1 -p 5432
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - exec pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h 127.0.0.1 -p 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+      volumes:
+      - name: postgres-config
+        configMap:
+          name: postgres-config
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "fast-ssd"
+      resources:
+        requests:
+          storage: 50Gi
+
+---
+# PostgreSQL 主库服务
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-primary
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-primary
+spec:
+  selector:
+    app: qlib-web
+    component: postgres-primary
+  ports:
+  - name: postgres
+    port: 5432
+    targetPort: 5432
+  clusterIP: None
+
+---
+# PostgreSQL 副本部署
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-replica
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-replica
+spec:
+  serviceName: postgres-replica
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qlib-web
+      component: postgres-replica
+  template:
+    metadata:
+      labels:
+        app: qlib-web
+        component: postgres-replica
+    spec:
+      securityContext:
+        fsGroup: 999
+        runAsUser: 999
+        runAsGroup: 999
+        runAsNonRoot: true
+      containers:
+      - name: postgres
+        image: postgres:15-alpine
+        ports:
+        - containerPort: 5432
+          name: postgres
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: qlib-web-config
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: qlib-web-secrets
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_PRIMARY_HOST
+          value: "postgres-primary"
+        - name: POSTGRES_PRIMARY_PORT
+          value: "5432"
+        - name: POSTGRES_REPLICATION_USER
+          value: "repl_user"
+        - name: POSTGRES_REPLICATION_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: qlib-web-secrets
+              key: POSTGRES_REPL_PASSWORD
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - exec pg_isready -U "$POSTGRES_USER" -h 127.0.0.1 -p 5432
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - exec pg_isready -U "$POSTGRES_USER" -h 127.0.0.1 -p 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "fast-ssd"
+      resources:
+        requests:
+          storage: 50Gi
+
+---
+# PostgreSQL 副本服务
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-replica
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-replica
+spec:
+  selector:
+    app: qlib-web
+    component: postgres-replica
+  ports:
+  - name: postgres
+    port: 5432
+    targetPort: 5432
+  clusterIP: None
+
+---
+# PostgreSQL 配置
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-config
+data:
+  postgresql.conf: |
+    # 内存配置
+    shared_buffers = 256MB
+    effective_cache_size = 1GB
+    work_mem = 4MB
+    maintenance_work_mem = 64MB
+    
+    # 检查点配置
+    checkpoint_completion_target = 0.9
+    wal_buffers = 16MB
+    
+    # 连接配置
+    max_connections = 100
+    
+    # 日志配置
+    logging_collector = on
+    log_directory = 'pg_log'
+    log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
+    log_rotation_age = 1d
+    log_rotation_size = 100MB
+    log_min_duration_statement = 1000
+    log_line_prefix = '%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '
+    
+    # 复制配置
+    wal_level = replica
+    max_wal_senders = 3
+    max_replication_slots = 3
+    hot_standby = on
+    
+    # 性能优化
+    random_page_cost = 1.1
+    effective_io_concurrency = 200
+    
+    # 其他配置
+    timezone = 'UTC'
+    datestyle = 'iso, mdy'
+    default_text_search_config = 'pg_catalog.english'

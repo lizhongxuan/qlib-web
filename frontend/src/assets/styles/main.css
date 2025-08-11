@@ -1,0 +1,266 @@
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 布局相关 */
+.layout-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-header {
+  height: 60px;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e7ed;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.layout-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.layout-sidebar {
+  width: 200px;
+  background: #304156;
+  transition: width 0.3s;
+}
+
+.layout-sidebar.collapsed {
+  width: 64px;
+}
+
+.layout-main {
+  flex: 1;
+  background: #f0f2f5;
+  overflow: auto;
+  padding: 20px;
+}
+
+/* 页面内容区域 */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  min-height: calc(100vh - 120px);
+}
+
+.page-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e4e7ed;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #303133;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: #909399;
+  margin-top: 8px;
+}
+
+/* 卡片样式增强 */
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none !important;
+}
+
+.stat-card .el-card__body {
+  padding: 24px;
+}
+
+.stat-card-title {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.stat-card-value {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.stat-card-trend {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* 表格样式增强 */
+.experiment-table .el-table__row {
+  cursor: pointer;
+}
+
+.experiment-table .el-table__row:hover {
+  background: #f5f7fa;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.pending {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-badge.running {
+  background: #f6ffed;
+  color: #52c41a;
+}
+
+.status-badge.completed {
+  background: #f0f9ff;
+  color: #1677ff;
+}
+
+.status-badge.failed {
+  background: #fff2f0;
+  color: #ff4d4f;
+}
+
+/* 图表容器 */
+.chart-container {
+  width: 100%;
+  height: 400px;
+  padding: 16px;
+}
+
+/* 表单样式增强 */
+.form-section {
+  margin-bottom: 32px;
+}
+
+.form-section-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #303133;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e4e7ed;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row .el-form-item {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* 动画效果 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .layout-main {
+    padding: 12px;
+  }
+  
+  .page-container {
+    padding: 16px;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-row .el-form-item {
+    margin-bottom: 16px;
+  }
+}
+
+/* 工具类 */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}

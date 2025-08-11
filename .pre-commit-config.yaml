@@ -1,0 +1,69 @@
+# Pre-commit hooks 配置
+repos:
+  # Python代码质量检查
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: debug-statements
+
+  # Python代码格式化
+  - repo: https://github.com/psf/black
+    rev: 23.1.0
+    hooks:
+      - id: black
+        files: ^backend/
+        args: [--line-length=88]
+
+  # Python导入排序
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        files: ^backend/
+        args: [--profile=black]
+
+  # Python代码检查
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        files: ^backend/
+        args: [--max-line-length=88, --ignore=E203,W503]
+
+  # JavaScript/TypeScript代码格式化
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.0-alpha.4
+    hooks:
+      - id: prettier
+        files: ^frontend/
+        types_or: [javascript, jsx, typescript, tsx, css, json, yaml, markdown]
+        args: [--write]
+
+  # ESLint检查
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v8.35.0
+    hooks:
+      - id: eslint
+        files: ^frontend/src/.*\.(js|jsx|ts|tsx|vue)$
+        types: [file]
+        additional_dependencies:
+          - eslint@8.35.0
+          - "@typescript-eslint/eslint-plugin@5.54.0"
+          - "@typescript-eslint/parser@5.54.0"
+          - "eslint-plugin-vue@9.9.0"
+
+  # 提交消息格式检查
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v2.42.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+
+# 配置
+default_stages: [commit]
+fail_fast: false

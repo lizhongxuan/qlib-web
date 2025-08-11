@@ -1,0 +1,164 @@
+# 持久化存储配置
+# PostgreSQL 主库存储
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-primary-pv
+  labels:
+    app: qlib-web
+    component: postgres-primary
+spec:
+  capacity:
+    storage: 50Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: fast-ssd
+  hostPath:
+    path: /data/qlib-web/postgres-primary
+    type: DirectoryOrCreate
+
+---
+# PostgreSQL 副本存储
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-replica-pv
+  labels:
+    app: qlib-web
+    component: postgres-replica
+spec:
+  capacity:
+    storage: 50Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: fast-ssd
+  hostPath:
+    path: /data/qlib-web/postgres-replica
+    type: DirectoryOrCreate
+
+---
+# Redis 存储
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  labels:
+    app: qlib-web
+    component: redis
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: fast-ssd
+  hostPath:
+    path: /data/qlib-web/redis
+    type: DirectoryOrCreate
+
+---
+# Qlib 数据存储
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qlib-data-pv
+  labels:
+    app: qlib-web
+    component: qlib-data
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  hostPath:
+    path: /data/qlib-web/qlib-data
+    type: DirectoryOrCreate
+
+---
+# PVC 声明
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-primary-pvc
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-primary
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: fast-ssd
+  selector:
+    matchLabels:
+      component: postgres-primary
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-replica-pvc
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: postgres-replica
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: fast-ssd
+  selector:
+    matchLabels:
+      component: postgres-replica
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: redis
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: fast-ssd
+  selector:
+    matchLabels:
+      component: redis
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qlib-data-pvc
+  namespace: qlib-web
+  labels:
+    app: qlib-web
+    component: qlib-data
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: standard
+  selector:
+    matchLabels:
+      component: qlib-data
