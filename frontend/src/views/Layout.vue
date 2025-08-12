@@ -54,6 +54,10 @@
             <el-icon><DataLine /></el-icon>
             <template #title>仪表盘</template>
           </el-menu-item>
+          <el-menu-item index="/factors">
+            <el-icon><Calculator /></el-icon>
+            <template #title>因子开发</template>
+          </el-menu-item>
           <el-menu-item index="/create">
             <el-icon><Plus /></el-icon>
             <template #title>新建实验</template>
@@ -80,7 +84,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
-import { Menu, Sunny, Moon, User, DataLine, Plus, Clock } from '@element-plus/icons-vue'
+import { Menu, Sunny, Moon, User, DataLine, Plus, Clock, Calculator } from '@element-plus/icons-vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 
 // 响应式状态
