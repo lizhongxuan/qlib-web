@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.v1.endpoints import experiments, dashboard, config, backup, templates, websocket, recommendations
+from app.api.v1.endpoints import experiments, dashboard, config, backup, templates, websocket, recommendations, factors, workflow, training, deployment
 from app.api.v1 import auth, users, team_experiments, shares, comments
 
 api_router = APIRouter()
@@ -21,3 +21,7 @@ api_router.include_router(backup.router, prefix="/backup", tags=["backup"])
 api_router.include_router(templates.router, prefix="/templates", tags=["templates"])
 api_router.include_router(websocket.router, prefix="/ws", tags=["websocket"])
 api_router.include_router(recommendations.router, prefix="/recommendations", tags=["recommendations"])
+api_router.include_router(factors.router, prefix="/factors", tags=["factors"])
+api_router.include_router(workflow.router, prefix="/workflow", tags=["workflow"])
+api_router.include_router(training.router, prefix="/training", tags=["training"])
+api_router.include_router(deployment.router, prefix="/deployment", tags=["deployment"])

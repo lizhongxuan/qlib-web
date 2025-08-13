@@ -124,6 +124,26 @@
     <!-- 详细分析 -->
     <el-card class="analysis-section">
       <el-tabs v-model="activeTab" type="card">
+        <!-- 策略排行榜 -->
+        <el-tab-pane label="策略排行榜" name="ranking">
+          <StrategyRanking ref="strategyRankingRef" />
+        </el-tab-pane>
+
+        <!-- 策略对比 -->
+        <el-tab-pane label="策略对比" name="comparison">
+          <StrategyComparison ref="strategyComparisonRef" />
+        </el-tab-pane>
+
+        <!-- AI优化建议 -->
+        <el-tab-pane label="AI优化建议" name="suggestions">
+          <OptimizationSuggestions ref="optimizationSuggestionsRef" />
+        </el-tab-pane>
+
+        <!-- 结果导出 -->
+        <el-tab-pane label="结果导出" name="exporter">
+          <ResultsExporter ref="resultsExporterRef" />
+        </el-tab-pane>
+
         <!-- 收益分析 -->
         <el-tab-pane label="收益分析" name="returns">
           <div class="returns-analysis">
@@ -531,9 +551,19 @@ import {
   DataAnalysis, TrendCharts, PieChart, Warning, SuccessFilled,
   Clock, Odometer, Download, MagicStick
 } from '@element-plus/icons-vue'
+import StrategyRanking from '@/components/results/StrategyRanking.vue'
+import StrategyComparison from '@/components/results/StrategyComparison.vue'
+import OptimizationSuggestions from '@/components/results/OptimizationSuggestions.vue'
+import ResultsExporter from '@/components/results/ResultsExporter.vue'
 
-// 响应式数据
-const activeTab = ref('returns')
+// 组件引用
+const strategyRankingRef = ref()
+const strategyComparisonRef = ref()
+const optimizationSuggestionsRef = ref()
+const resultsExporterRef = ref()
+
+// 响应式数据  
+const activeTab = ref('ranking')
 const selectedStrategy = ref('strategy_1')
 const visibleSeries = ref(['strategy', 'benchmark'])
 const positionPeriod = ref('latest')
