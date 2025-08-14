@@ -24,6 +24,14 @@ const StrategyBacktest = () => import('@/views/StrategyBacktest.vue')
 const ResultsAnalysis = () => import('@/views/ResultsAnalysis.vue')
 const StrategyDeployment = () => import('@/views/StrategyDeployment.vue')
 
+// Qlib专业页面路由懒加载
+const QlibDashboard = () => import('@/views/QlibDashboard.vue')
+const QlibDataBrowser = () => import('@/views/QlibDataBrowser.vue')
+const QlibFactorWorkshop = () => import('@/views/QlibFactorWorkshop.vue')
+const QlibModelLab = () => import('@/views/QlibModelLab.vue')
+const QlibBacktestEngine = () => import('@/views/QlibBacktestEngine.vue')
+const QlibStrategyBuilder = () => import('@/views/QlibStrategyBuilder.vue')
+
 const routes: Array<RouteRecordRaw> = [
   // 认证路由
   {
@@ -176,6 +184,90 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '团队管理',
           icon: 'Avatar'
+        }
+      },
+      
+      // Qlib专业页面路由
+      {
+        path: '/qlib-dashboard',
+        name: 'QlibDashboard',
+        component: QlibDashboard,
+        meta: {
+          title: 'Qlib中心',
+          icon: 'Monitor',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDataPreload: true,
+          workflowStep: 'qlib-overview'
+        }
+      },
+      {
+        path: '/qlib-data-browser',
+        name: 'QlibDataBrowser',
+        component: QlibDataBrowser,
+        meta: {
+          title: 'Qlib数据浏览器',
+          icon: 'DataBoard',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDataPreload: true,
+          workflowStep: 'data-exploration'
+        }
+      },
+      {
+        path: '/qlib-factor-workshop',
+        name: 'QlibFactorWorkshop',
+        component: QlibFactorWorkshop,
+        meta: {
+          title: 'Qlib因子工作坊',
+          icon: 'MagicStick',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDependencyCheck: false,
+          enableDataPreload: true,
+          workflowStep: 'qlib-factor-development'
+        }
+      },
+      {
+        path: '/qlib-model-lab',
+        name: 'QlibModelLab',
+        component: QlibModelLab,
+        meta: {
+          title: 'Qlib模型实验室',
+          icon: 'Cpu',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDependencyCheck: true,
+          enableDataPreload: true,
+          workflowStep: 'qlib-model-training'
+        }
+      },
+      {
+        path: '/qlib-backtest-engine',
+        name: 'QlibBacktestEngine',
+        component: QlibBacktestEngine,
+        meta: {
+          title: 'Qlib回测引擎',
+          icon: 'TrendCharts',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDependencyCheck: true,
+          enableDataPreload: true,
+          workflowStep: 'qlib-backtesting'
+        }
+      },
+      {
+        path: '/qlib-strategy-builder',
+        name: 'QlibStrategyBuilder',
+        component: QlibStrategyBuilder,
+        meta: {
+          title: 'Qlib策略构建器',
+          icon: 'Setting',
+          requiresAuth: true,
+          enableSmartNavigation: true,
+          enableDependencyCheck: true,
+          enableDataPreload: true,
+          workflowStep: 'qlib-strategy-building'
         }
       }
     ]

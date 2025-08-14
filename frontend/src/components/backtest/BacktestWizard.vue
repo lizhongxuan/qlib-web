@@ -481,7 +481,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   'config-completed': [config: any]
-  'backtest-started': [config: any]
+  'backtest-started': [data: {taskId?: string, config: any}]
 }>()
 
 // 响应式数据
@@ -608,13 +608,76 @@ const startBacktest = async () => {
   isStarting.value = true
   
   try {
-    // 模拟启动过程
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    emit('backtest-started', { ...config })
-    ElMessage.success('回测任务已启动')
+    // 构建qlib回测请求
+    const backtestRequest = {
+      backtest_name: config.basic.name,
+      strategy_config: {
+        class: 'TopkDropoutStrategy',
+        kwargs: {
+          topk: config.strategy.topK,
+          n_drop: Math.floor(config.strategy.topK * 0.05)
+        }
+      },
+      dataset_config: {
+        class: 'DatasetH',
+        kwargs: {
+          handler: {
+            class: 'Alpha158',
+            kwargs: {}
+          },
+          segments: {
+            train: [config.basic.dateRange[0], config.basic.dateRange[1]]
+          }
+        }
+      },
+      portfolio_config: {
+        executor: {
+          class: 'SimulatorExecutor',
+          kwargs: {
+            time_per_step: config.basic.frequency,
+            generate_portfolio_metrics: true
+          }
+        }
+      },
+      backtest_config: {
+        start_time: config.basic.dateRange[0],
+        end_time: config.basic.dateRange[1],
+        account: config.basic.initialCapital,
+        benchmark: config.basic.benchmark,
+        exchange_kwargs: {
+          freq: config.basic.frequency,
+          limit_threshold: config.risk.maxPositionRatio,
+          deal_price: config.basic.tradePrice
+        }
+      }
+    }
+
+    const response = await fetch('/api/v1/models/backtest', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(backtestRequest)
+    })
+
+    const result = await response.json()
+
+    if (result.status === 'success') {
+      emit('backtest-started', {
+        taskId: result.data.task_id,
+        config: { ...config }
+      })
+      ElMessage.success('回测任务已启动，任务ID: ' + result.data.task_id)
+    } else {
+      throw new Error(result.message || '启动回测失败')
+    }
   } catch (error) {
-    ElMessage.error('启动回测失败')
+    console.error('启动回测失败:', error)
+    ElMessage.error('启动回测失败: ' + error.message)
+    
+    // 降级到本地模拟
+    emit('backtest-started', { ...config })
+    ElMessage.warning('已降级到模拟模式启动回测')
   } finally {
     isStarting.value = false
   }

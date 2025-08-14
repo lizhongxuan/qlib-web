@@ -38,7 +38,7 @@
     </div>
 
     <!-- 因子列表 -->
-    <div class="factors-grid">
+    <div v-loading="isLoading" class="factors-grid">
       <div 
         v-for="factor in filteredFactors" 
         :key="factor.id"
@@ -174,7 +174,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import {
   Collection, Search, Plus, MoreFilled, Edit, View, 
@@ -198,31 +198,78 @@ const selectedFactors = ref<string[]>([])
 const showCreateDialog = ref(false)
 const showTestDialog = ref(false)
 const testingFactor = ref<FactorDefinition | null>(null)
+const isLoading = ref(false)
+const factors = ref<FactorDefinition[]>([])
 
-const factors = ref<FactorDefinition[]>([
-  {
-    id: 'momentum_20d',
-    name: '20日动量因子',
-    expression: '($close / Ref($close, 20)) - 1',
-    description: '计算过去20个交易日的累计收益率，用于捕捉价格动量效应',
-    category: 'technical',
-    status: 'active',
-    performance: {
-      ic: 0.045,
-      ir: 1.25,
-      winRate: 58.7
-    },
-    createdBy: 'AI Assistant',
-    createdAt: new Date('2024-08-01')
-  },
-  {
-    id: 'pe_inverse',
-    name: '市盈率倒数因子',
-    expression: '1 / $pe_ttm',
-    description: '市盈率的倒数，数值越大表示估值越便宜',
-    category: 'fundamental',
-    status: 'active',
-    performance: {
+// 从qlib API获取因子库
+const loadFactorLibrary = async () => {
+  isLoading.value = true
+  try {
+    const params = new URLSearchParams()
+    if (categoryFilter.value) {
+      params.append('category', categoryFilter.value)
+    }
+    if (searchText.value) {
+      params.append('search_term', searchText.value)
+    }
+    params.append('include_builtin', 'true')
+    params.append('include_custom', 'true')
+
+    const response = await fetch(`/api/v1/qlib-factors/factor-library?${params}`)
+    const result = await response.json()
+    
+    if (result.status === 'success') {
+      // 转换qlib因子数据格式为前端格式
+      const factorArray = Object.values(result.data.factors).map((factor: any) => ({
+        id: factor.factor_id,
+        name: factor.name,
+        expression: factor.expression,
+        description: factor.description || '无描述',
+        category: factor.category,
+        status: 'active',
+        performance: factor.performance || null,
+        createdBy: factor.source === 'builtin' ? 'Qlib内置' : '用户自定义',
+        createdAt: factor.created_at ? new Date(factor.created_at) : new Date(),
+        source: factor.source,
+        parameters: factor.parameters || {}
+      }))
+      
+      factors.value = factorArray
+      ElMessage.success(`成功加载 ${factorArray.length} 个因子`)
+    } else {
+      throw new Error(result.message || '获取因子库失败')
+    }
+  } catch (error) {
+    console.error('加载因子库失败:', error)
+    ElMessage.error('加载因子库失败: ' + error.message)
+    
+    // 降级到模拟数据
+    factors.value = [
+      {
+        id: 'momentum_20d',
+        name: '20日动量因子',
+        expression: '($close / Ref($close, 20)) - 1',
+        description: '计算过去20个交易日的累计收益率，用于捕捉价格动量效应',
+        category: 'momentum',
+        status: 'active',
+        performance: {
+          ic: 0.045,
+          ir: 1.25,
+          winRate: 58.7
+        },
+        createdBy: 'Qlib内置',
+        createdAt: new Date('2024-08-01'),
+        source: 'builtin',
+        parameters: { period: 20 }
+      },
+      {
+        id: 'pe_ratio',
+        name: '市盈率倒数因子',
+        expression: '1 / $pe',
+        description: '市盈率的倒数，数值越大表示估值越便宜',
+        category: 'fundamental',
+        status: 'active',
+        performance: {
       ic: 0.062,
       ir: 0.95,
       winRate: 55.2
@@ -459,9 +506,93 @@ const handleFactorSaved = (factor: FactorDefinition) => {
   ElMessage.success('因子创建成功')
 }
 
+// 监听搜索和筛选条件变化
+watch([searchText, categoryFilter], () => {
+  loadFactorLibrary()
+}, { debounce: 500 })
+
+// 从qlib API获取因子分类
+const loadFactorCategories = async () => {
+  try {
+    const response = await fetch('/api/v1/qlib-factors/factor-categories')
+    const result = await response.json()
+    
+    if (result.status === 'success') {
+      // 更新分类选项
+      console.log('因子分类:', result.data)
+    }
+  } catch (error) {
+    console.error('获取因子分类失败:', error)
+  }
+}
+
+// 创建自定义因子
+const createCustomFactor = async (factorData: any) => {
+  try {
+    const response = await fetch('/api/v1/qlib-factors/create-factor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        factor_name: factorData.name,
+        expression: factorData.expression,
+        description: factorData.description,
+        category: factorData.category,
+        parameters: factorData.parameters
+      })
+    })
+    
+    const result = await response.json()
+    
+    if (result.status === 'success') {
+      ElMessage.success('因子创建成功')
+      loadFactorLibrary() // 重新加载因子库
+      return result.data
+    } else {
+      throw new Error(result.message || '创建因子失败')
+    }
+  } catch (error) {
+    console.error('创建因子失败:', error)
+    ElMessage.error('创建因子失败: ' + error.message)
+    throw error
+  }
+}
+
+// 验证因子表达式
+const validateFactor = async (expression: string, instruments: string = 'csi300') => {
+  try {
+    const response = await fetch('/api/v1/qlib-factors/validate-factor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        factor_expression: expression,
+        instruments: instruments,
+        start_time: '2020-01-01',
+        end_time: '2023-12-31'
+      })
+    })
+    
+    const result = await response.json()
+    
+    if (result.status === 'success') {
+      return result.data
+    } else {
+      throw new Error(result.message || '因子验证失败')
+    }
+  } catch (error) {
+    console.error('因子验证失败:', error)
+    throw error
+  }
+}
+
 // 生命周期
 onMounted(() => {
-  // 初始化数据
+  // 初始化加载数据
+  loadFactorLibrary()
+  loadFactorCategories()
 })
 </script>
 

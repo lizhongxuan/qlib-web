@@ -469,7 +469,68 @@ const formatDuration = (seconds: number) => {
   return `${minutes}m`
 }
 
-const refreshRanking = () => {
+// 从qlib API加载模型排行榜
+const loadModelRanking = async () => {
+  try {
+    const response = await fetch('/api/v1/models/registry', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const result = await response.json()
+
+    if (result.status === 'success') {
+      const qlibModels = result.data.models.map((model: any) => ({
+        id: model.model_id,
+        name: model.name,
+        type: model.model_type,
+        author: model.created_by || 'Unknown',
+        metrics: {
+          accuracy: model.metrics?.accuracy || 0,
+          precision: model.metrics?.precision || 0,
+          recall: model.metrics?.recall || 0,
+          f1Score: model.metrics?.f1_score || 0,
+          auc: model.metrics?.auc || 0,
+          sharpeRatio: model.metrics?.sharpe_ratio || 0,
+          maxDrawdown: model.metrics?.max_drawdown || 0,
+          annualReturn: model.metrics?.annual_return || 0,
+          volatility: model.metrics?.volatility || 0
+        },
+        performance: getPerformanceLevel(model.metrics?.score || 0),
+        trend: model.trend_score || 0,
+        rankChange: model.rank_change || 0,
+        createdAt: new Date(model.created_at),
+        trainingTime: model.training_time || 0,
+        config: {
+          modelType: model.model_type,
+          parameters: model.hyperparameters || {}
+        }
+      }))
+
+      models.value = qlibModels
+      ElMessage.success(`成功加载 ${qlibModels.length} 个模型`)
+    } else {
+      throw new Error(result.message || '获取模型排行榜失败')
+    }
+  } catch (error) {
+    console.error('加载模型排行榜失败:', error)
+    ElMessage.error('加载模型排行榜失败，使用示例数据: ' + error.message)
+    // 保持现有模拟数据作为降级方案
+  }
+}
+
+// 根据分数获取性能等级
+const getPerformanceLevel = (score: number): string => {
+  if (score >= 90) return 'excellent'
+  if (score >= 80) return 'good'
+  if (score >= 70) return 'average'
+  return 'poor'
+}
+
+const refreshRanking = async () => {
+  await loadModelRanking()
   ElMessage.success('排行榜已刷新')
 }
 
@@ -517,8 +578,9 @@ const initializeCharts = () => {
 
 // 生命周期
 onMounted(() => {
-  // 初始化图表
+  // 初始化图表和加载数据
   initializeCharts()
+  loadModelRanking()
 })
 </script>
 

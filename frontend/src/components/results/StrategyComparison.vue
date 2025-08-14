@@ -710,8 +710,91 @@ defineExpose({
   getComparisonData: () => comparisonData.value
 })
 
+// 从qlib API加载策略对比数据
+const loadStrategyComparison = async (strategyIds: string[]) => {
+  try {
+    const response = await fetch('/api/v1/qlib-factors/construct-strategy', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        strategy_ids: strategyIds,
+        comparison_metrics: ['annual_return', 'sharpe_ratio', 'max_drawdown', 'information_ratio'],
+        benchmark: 'CSI300',
+        start_date: '2020-01-01',
+        end_date: '2023-12-31'
+      })
+    })
+
+    const result = await response.json()
+
+    if (result.status === 'success') {
+      return result.data.strategies_comparison
+    } else {
+      throw new Error(result.message || '策略对比数据加载失败')
+    }
+  } catch (error) {
+    console.error('加载策略对比失败:', error)
+    ElMessage.error('加载策略对比失败: ' + error.message)
+    return null
+  }
+}
+
+// 从qlib API获取可用策略列表
+const loadAvailableStrategies = async () => {
+  try {
+    const response = await fetch('/api/v1/qlib-factors/strategy-templates')
+    const result = await response.json()
+
+    if (result.status === 'success') {
+      const strategies = result.data.strategies.map((strategy: any) => ({
+        id: strategy.strategy_id,
+        name: strategy.name,
+        type: strategy.type,
+        score: strategy.performance_score || 0,
+        annualReturn: strategy.metrics?.annual_return || 0,
+        totalReturn: strategy.metrics?.total_return || 0,
+        sharpeRatio: strategy.metrics?.sharpe_ratio || 0,
+        maxDrawdown: strategy.metrics?.max_drawdown || 0,
+        winRate: strategy.metrics?.win_rate || 0,
+        informationRatio: strategy.metrics?.information_ratio || 0,
+        volatility: strategy.metrics?.volatility || 0,
+        calmarRatio: strategy.metrics?.calmar_ratio || 0
+      }))
+      
+      availableStrategies.value = strategies
+      ElMessage.success(`成功加载 ${strategies.length} 个策略`)
+    } else {
+      throw new Error(result.message || '获取策略列表失败')
+    }
+  } catch (error) {
+    console.error('加载策略列表失败:', error)
+    // 保持现有的模拟数据作为降级方案
+    ElMessage.error('加载策略列表失败，使用示例数据: ' + error.message)
+  }
+}
+
+// 监听选中策略变化，自动加载对比数据
+watch(selectedStrategies, async (newStrategies) => {
+  if (newStrategies.length >= 2) {
+    const strategyIds = newStrategies.map(s => s.id)
+    const comparisonData = await loadStrategyComparison(strategyIds)
+    
+    if (comparisonData) {
+      // 更新策略数据为qlib返回的最新数据
+      newStrategies.forEach((strategy, index) => {
+        if (comparisonData.strategies[index]) {
+          Object.assign(strategy, comparisonData.strategies[index])
+        }
+      })
+    }
+  }
+})
+
 onMounted(() => {
-  // 初始化
+  // 初始化时加载可用策略
+  loadAvailableStrategies()
 })
 </script>
 

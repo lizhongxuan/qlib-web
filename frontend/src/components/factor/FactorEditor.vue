@@ -355,32 +355,99 @@ const validateExpression = async () => {
     return
   }
 
+  testing.value = true
+  
   try {
-    // 模拟语法验证
-    const errors = await validateQlibExpression(factorForm.expression)
+    // 调用qlib API进行因子验证
+    const response = await fetch('/api/v1/qlib-factors/validate-factor', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        factor_expression: factorForm.expression,
+        instruments: 'csi300',
+        start_time: '2020-01-01',
+        end_time: '2023-12-31',
+        validation_metrics: ['ic', 'rank_ic']
+      })
+    })
     
-    if (errors.length === 0) {
-      validationStatus.value = { type: 'success', text: '语法正确' }
-      syntaxErrors.value = []
-      emit('validate', true)
+    const result = await response.json()
+    
+    if (result.status === 'success') {
+      const validation = result.data
+      
+      if (validation.isValid) {
+        validationStatus.value = { 
+          type: 'success', 
+          text: `语法正确 (得分: ${validation.score}分)` 
+        }
+        syntaxErrors.value = []
+        
+        // 如果有性能指标，更新显示
+        if (validation.metrics) {
+          updatePerformanceMetrics(validation.metrics)
+        }
+        
+        emit('validate', true)
+        ElMessage.success('因子表达式验证通过')
+      } else {
+        validationStatus.value = { type: 'danger', text: '验证失败' }
+        syntaxErrors.value = validation.errors.map((error: string) => ({
+          message: error,
+          detail: '请检查因子表达式语法'
+        }))
+        
+        if (validation.warnings && validation.warnings.length > 0) {
+          validation.warnings.forEach((warning: string) => {
+            ElMessage.warning(warning)
+          })
+        }
+        
+        emit('validate', false, validation.errors)
+      }
     } else {
-      validationStatus.value = { type: 'danger', text: '语法错误' }
-      syntaxErrors.value = errors
-      emit('validate', false, errors.map(e => e.message))
+      throw new Error(result.message || '验证请求失败')
     }
   } catch (error) {
+    console.error('因子验证失败:', error)
     validationStatus.value = { type: 'danger', text: '验证失败' }
-    emit('validate', false, ['验证过程出错'])
+    
+    // 降级到简单的本地验证
+    const localErrors = await validateQlibExpressionLocal(factorForm.expression)
+    syntaxErrors.value = localErrors
+    
+    if (localErrors.length === 0) {
+      validationStatus.value = { type: 'warning', text: '本地验证通过(服务器验证失败)' }
+      emit('validate', true)
+    } else {
+      emit('validate', false, localErrors.map(e => e.message))
+    }
+    
+    ElMessage.error('服务器验证失败，使用本地验证: ' + error.message)
+  } finally {
+    testing.value = false
   }
 }
 
-const validateQlibExpression = async (expression: string) => {
-  // 模拟异步验证
-  await new Promise(resolve => setTimeout(resolve, 500))
+// 更新性能指标显示
+const updatePerformanceMetrics = (metrics: any) => {
+  if (metrics.ic) {
+    console.log('IC指标:', metrics.ic)
+  }
+  if (metrics.statistics) {
+    console.log('统计信息:', metrics.statistics)
+  }
+}
+
+// 本地简单验证作为降级方案
+const validateQlibExpressionLocal = async (expression: string) => {
+  await new Promise(resolve => setTimeout(resolve, 300))
   
   const errors: Array<{message: string, detail: string}> = []
   
-  // 简单的语法检查
+  // 基本语法检查
   if (expression.includes('(') && !expression.includes(')')) {
     errors.push({
       message: '括号不匹配',
@@ -392,6 +459,21 @@ const validateQlibExpression = async (expression: string) => {
     errors.push({
       message: '字段引用格式错误',
       detail: '字段引用应该以$开头，如$close, $volume等'
+    })
+  }
+  
+  // 检查常用qlib函数
+  const qlibFunctions = ['Mean', 'Std', 'Ref', 'Rank', 'Max', 'Min', 'Sum', 'Delta']
+  const missingFunctions = expression.match(/[A-Z][a-z]+\(/g)
+  if (missingFunctions) {
+    missingFunctions.forEach(func => {
+      const funcName = func.slice(0, -1)
+      if (!qlibFunctions.includes(funcName)) {
+        errors.push({
+          message: `未知函数: ${funcName}`,
+          detail: `请确认函数名是否正确，常用函数包括: ${qlibFunctions.join(', ')}`
+        })
+      }
     })
   }
   

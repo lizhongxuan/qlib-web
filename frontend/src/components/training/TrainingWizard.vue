@@ -412,6 +412,7 @@ interface Props {
 interface Emits {
   (e: 'update:modelValue', value: any): void
   (e: 'config-changed', config: any): void
+  (e: 'training-started', data: {taskId: string, config: any}): void
 }
 
 const props = defineProps<Props>()
@@ -493,6 +494,78 @@ const computeRequirement = computed(() => {
     return localConfig.trainingParams.batchSize > 64 ? 'GPU(高)' : 'GPU(中)'
   }
   return 'CPU'
+})
+
+// 启动qlib模型训练
+const startTraining = async () => {
+  try {
+    // 构建qlib训练请求
+    const trainingRequest = {
+      model_name: props.modelType,
+      model_params: localConfig.modelConfig.params,
+      dataset_config: {
+        class: 'DatasetH',
+        kwargs: {
+          handler: {
+            class: 'Alpha158',
+            kwargs: {}
+          },
+          segments: {
+            train: ['2018-01-01', '2020-12-31'],
+            valid: ['2021-01-01', '2021-12-31'],
+            test: ['2022-01-01', '2022-12-31']
+          }
+        }
+      },
+      task_config: {
+        task: {
+          model: {
+            class: `qlib.contrib.model.${props.modelType.toLowerCase()}.${props.modelType}Model`,
+            kwargs: localConfig.modelConfig.params
+          },
+          dataset: {
+            class: 'DatasetH',
+            kwargs: {
+              handler: {
+                class: 'Alpha158',
+                kwargs: {}
+              }
+            }
+          }
+        }
+      },
+      experiment_name: localConfig.name
+    }
+
+    const response = await fetch('/api/v1/models/train', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(trainingRequest)
+    })
+
+    const result = await response.json()
+
+    if (result.status === 'success') {
+      emit('training-started', {
+        taskId: result.data.task_id,
+        config: localConfig
+      })
+      return result.data
+    } else {
+      throw new Error(result.message || '启动训练失败')
+    }
+  } catch (error) {
+    console.error('启动训练失败:', error)
+    throw error
+  }
+}
+
+// 暴露训练方法给父组件
+defineExpose({
+  startTraining,
+  validateConfig: () => formRef.value?.validate()
 })
 
 // 方法
