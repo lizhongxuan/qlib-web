@@ -114,7 +114,7 @@ export class QlibErrorHandler {
     console.warn('数据不可用错误:', error.message, context)
 
     const config = QLIB_ERROR_CONFIG.data_unavailable
-    let retryCount = this.getRetryCount(`data_${context.dataType}_${context.provider}`)
+    const retryCount = this.getRetryCount(`data_${context.dataType}_${context.provider}`)
 
     // 尝试重试机制
     if (retryCount < config.retry_strategy.max_retries) {
@@ -351,7 +351,7 @@ export class QlibErrorHandler {
 
     // 重试机制
     const retryKey = `api_${serviceName}`
-    let retryCount = this.getRetryCount(retryKey)
+    const retryCount = this.getRetryCount(retryKey)
     const maxRetries = QLIB_ERROR_CONFIG.api_failure.retry_config.max_retries
 
     if (retryCount < maxRetries) {

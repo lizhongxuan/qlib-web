@@ -7,8 +7,14 @@
 6 silly config load:file:/opt/homebrew/etc/npmrc
 7 verbose title npm view @anthropic-ai/claude-code@latest version
 8 verbose argv "view" "@anthropic-ai/claude-code@latest" "version"
-9 verbose logfile logs-max:10 dir:/Users/zhongxuan/Desktop/demo3/qlib-web/npm-cache/_logs/2025-08-15T05_48_48_341Z-
-10 verbose logfile /Users/zhongxuan/Desktop/demo3/qlib-web/npm-cache/_logs/2025-08-15T05_48_48_341Z-debug-0.log
+9 verbose logfile logs-max:10 dir:/Users/zhongxuan/Desktop/demo3/qlib-web/npm-cache/_logs/2025-08-15T07_59_19_350Z-
+10 verbose logfile /Users/zhongxuan/Desktop/demo3/qlib-web/npm-cache/_logs/2025-08-15T07_59_19_350Z-debug-0.log
 11 silly logfile start cleaning logs, removing 1 files
 12 silly logfile done cleaning log files
-13 http fetch GET https://registry.npmmirror.com/@anthropic-ai%2fclaude-code attempt 1 failed with ECONNREFUSED
+13 http fetch GET 200 https://registry.npmmirror.com/@anthropic-ai%2fclaude-code 106ms (cache revalidated)
+14 verbose cwd /Users/zhongxuan/Desktop/demo3/qlib-web
+15 verbose os Darwin 23.5.0
+16 verbose node v23.10.0
+17 verbose npm  v10.9.2
+18 verbose exit 0
+19 info ok

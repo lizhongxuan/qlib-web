@@ -106,15 +106,14 @@ class AuthService:
             company=user_data.company,
             department=user_data.department,
             position=user_data.position,
-            status=UserStatus.INACTIVE  # 需要验证邮箱后激活
+            status=UserStatus.ACTIVE,  # 直接激活，不需要邮箱验证
+            is_email_verified=True,   # 直接设置为已验证
+            email_verified_at=datetime.now(timezone.utc)  # 设置验证时间
         )
         
         db.add(user)
         db.commit()
         db.refresh(user)
-        
-        # 发送验证邮件
-        self.send_verification_email(db, user)
         
         return user
     

@@ -66,7 +66,7 @@ class User(Base):
     
     # 关系
     experiments = relationship("Experiment", back_populates="creator", cascade="all, delete-orphan")
-    templates = relationship("Template", back_populates="creator", cascade="all, delete-orphan")
+    templates = relationship("ExperimentTemplate", back_populates="creator", cascade="all, delete-orphan")
     teams = relationship("Team", secondary=user_team_association, back_populates="members")
     owned_teams = relationship("Team", back_populates="owner", cascade="all, delete-orphan")
     

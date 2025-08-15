@@ -176,11 +176,12 @@ class InputValidator:
                     issues.append(f"{field_name}: 检测到潜在的XSS攻击")
                     break
             
-            # 文件上传安全检测
-            for pattern in self.file_upload_patterns:
-                if re.search(pattern, data, re.IGNORECASE):
-                    issues.append(f"{field_name}: 检测到不安全的文件类型")
-                    break
+            # 文件上传安全检测 - 只对文件相关字段进行检测
+            if "file" in field_name.lower() or "upload" in field_name.lower() or "attachment" in field_name.lower():
+                for pattern in self.file_upload_patterns:
+                    if re.search(pattern, data, re.IGNORECASE):
+                        issues.append(f"{field_name}: 检测到不安全的文件类型")
+                        break
         
         elif isinstance(data, dict):
             for key, value in data.items():
@@ -230,6 +231,9 @@ class SecurityMiddleware(BaseHTTPMiddleware):
             "/", "/health", "/docs", "/openapi.json", "/favicon.ico",
             "/api/v1/docs", "/api/v1/openapi.json", "/api/v1/redoc",
             "/api/v1/auth/login", "/api/v1/auth/register",
+            "/api/v1/auth/check-username", "/api/v1/auth/check-email",
+            "/api/v1/auth/forgot-password", "/api/v1/auth/reset-password",
+            "/api/v1/auth/verify-email",
             "/api/v1/monitoring/health",
             "/apm/dashboard", "/errors/dashboard", "/analytics/dashboard",
             "/errors/recent", "/errors/statistics",

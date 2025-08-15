@@ -34,7 +34,7 @@ async def register(
         
         return UserApiResponse(
             success=True,
-            message="注册成功，请检查邮箱并验证邮箱地址",
+            message="注册成功",
             data=UserResponse.from_orm(user)
         )
     except HTTPException:

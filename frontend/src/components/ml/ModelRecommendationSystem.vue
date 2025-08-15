@@ -102,7 +102,7 @@
               </template>
 
               <div v-if="recommendations.length === 0" class="empty-recommendations">
-                <el-empty description="点击"生成推荐"获取最适合的模型建议" />
+                <el-empty description="点击生成推荐获取最适合的模型建议" />
               </div>
 
               <div v-else class="recommendations-list">

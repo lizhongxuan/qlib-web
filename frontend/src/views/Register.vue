@@ -9,7 +9,6 @@
       <el-steps :active="currentStep" finish-status="success" align-center>
         <el-step title="基本信息" />
         <el-step title="账户设置" />
-        <el-step title="验证邮箱" />
       </el-steps>
       
       <!-- 第一步：基本信息 -->
@@ -102,19 +101,16 @@
         </el-form-item>
       </el-form>
       
-      <!-- 第三步：验证邮箱 -->
+      <!-- 注册成功提示 -->
       <div v-show="currentStep === 2" class="verification-step">
         <el-result
           icon="success"
           title="注册成功！"
-          sub-title="验证邮件已发送到您的邮箱，请点击邮件中的链接完成验证"
+          sub-title="您的账户已创建成功，现在可以登录使用了"
         >
           <template #extra>
             <el-button type="primary" @click="$router.push('/login')">
               前往登录
-            </el-button>
-            <el-button @click="resendEmail" :loading="resendLoading">
-              重新发送验证邮件
             </el-button>
           </template>
         </el-result>
@@ -172,7 +168,6 @@ const step2FormRef = ref<InstanceType<typeof ElForm>>()
 
 const currentStep = ref(0)
 const loading = ref(false)
-const resendLoading = ref(false)
 
 const registerForm = reactive({
   full_name: '',
@@ -269,7 +264,7 @@ const handleRegister = async () => {
   
   try {
     await authStore.register(registerForm)
-    ElMessage.success('注册成功，请查收验证邮件')
+    ElMessage.success('注册成功！')
     currentStep.value = 2
   } catch (error: any) {
     ElMessage.error(error.message || '注册失败')
@@ -278,19 +273,6 @@ const handleRegister = async () => {
   }
 }
 
-const resendEmail = async () => {
-  resendLoading.value = true
-  
-  try {
-    // TODO: 实现重新发送邮件的API调用
-    await new Promise(resolve => setTimeout(resolve, 1000)) // 模拟API调用
-    ElMessage.success('验证邮件已重新发送')
-  } catch (error: any) {
-    ElMessage.error(error.message || '发送失败')
-  } finally {
-    resendLoading.value = false
-  }
-}
 </script>
 
 <style scoped>

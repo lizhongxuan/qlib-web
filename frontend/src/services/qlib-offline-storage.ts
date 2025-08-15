@@ -855,7 +855,7 @@ export class QlibOfflineStorage {
 
   private getSessionStorageSize(): string {
     let size = 0
-    for (let key in sessionStorage) {
+    for (const key in sessionStorage) {
       if (sessionStorage.hasOwnProperty(key) && key.startsWith('qlib_')) {
         size += sessionStorage[key].length
       }
@@ -865,7 +865,7 @@ export class QlibOfflineStorage {
 
   private getLocalStorageSize(): string {
     let size = 0
-    for (let key in localStorage) {
+    for (const key in localStorage) {
       if (localStorage.hasOwnProperty(key) && key.startsWith('qlib_')) {
         size += localStorage[key].length
       }

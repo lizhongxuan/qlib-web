@@ -203,7 +203,7 @@ class FormAutoSaveManager {
   getStats(): { totalSaves: number; totalSize: number; formCount: number } {
     let totalSaves = 0
     let totalSize = 0
-    let formCount = this.saves.size
+    const formCount = this.saves.size
 
     for (const saves of this.saves.values()) {
       totalSaves += saves.length

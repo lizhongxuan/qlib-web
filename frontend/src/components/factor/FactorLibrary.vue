@@ -270,13 +270,15 @@ const loadFactorLibrary = async () => {
         category: 'fundamental',
         status: 'active',
         performance: {
-      ic: 0.062,
-      ir: 0.95,
-      winRate: 55.2
-    },
-    createdBy: 'Manual Editor',
-    createdAt: new Date('2024-07-28')
-  },
+          ic: 0.062,
+          ir: 0.95,
+          winRate: 55.2
+        },
+        createdBy: 'Manual Editor',
+        createdAt: new Date('2024-07-28'),
+        source: 'custom',
+        parameters: {}
+      },
   {
     id: 'volume_strength',
     name: '成交量相对强度',
@@ -290,7 +292,9 @@ const loadFactorLibrary = async () => {
       winRate: 52.1
     },
     createdBy: 'AI Assistant',
-    createdAt: new Date('2024-08-05')
+    createdAt: new Date('2024-08-05'),
+    source: 'custom',
+    parameters: {}
   },
   {
     id: 'rsi_factor',
@@ -305,9 +309,15 @@ const loadFactorLibrary = async () => {
       winRate: 48.3
     },
     createdBy: 'Manual Editor',
-    createdAt: new Date('2024-07-15')
+    createdAt: new Date('2024-07-15'),
+    source: 'custom',
+    parameters: {}
   }
-])
+    ]
+  } finally {
+    isLoading.value = false
+  }
+}
 
 // 计算属性
 const filteredFactors = computed(() => {
