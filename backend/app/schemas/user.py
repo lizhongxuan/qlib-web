@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel, EmailStr, Field
 try:
-    from pydantic import field_validator
+    from pydantic import field_validator, model_validator
     PYDANTIC_V2 = True
 except ImportError:
     from pydantic import validator
@@ -148,9 +148,39 @@ class PasswordReset(BaseModel):
 # 登录相关
 class UserLogin(BaseModel):
     """用户登录"""
-    username_or_email: str = Field(..., min_length=1, max_length=100)
+    username_or_email: Optional[str] = Field(None, min_length=1, max_length=100)
+    username: Optional[str] = Field(None, min_length=1, max_length=50)
+    email: Optional[EmailStr] = None
     password: str = Field(..., min_length=1, max_length=50)
     remember_me: bool = False
+    
+    if PYDANTIC_V2:
+        @model_validator(mode='before')
+        @classmethod
+        def validate_login_fields(cls, values):
+            if isinstance(values, dict):
+                # 如果前端发送了username或email，转换为username_or_email
+                if 'username' in values and values['username'] and not values.get('username_or_email'):
+                    values['username_or_email'] = values['username']
+                elif 'email' in values and values['email'] and not values.get('username_or_email'):
+                    values['username_or_email'] = values['email']
+                
+                # 确保有登录凭据
+                if not values.get('username_or_email'):
+                    raise ValueError('必须提供用户名、邮箱或username_or_email')
+            return values
+    else:
+        @validator('username_or_email', pre=True, always=True)
+        def validate_login_credential(cls, v, values):
+            if not v:
+                # 如果没有username_or_email，尝试从username或email获取
+                if 'username' in values and values['username']:
+                    return values['username']
+                elif 'email' in values and values['email']:
+                    return values['email']
+                else:
+                    raise ValueError('必须提供用户名、邮箱或username_or_email')
+            return v
 
 
 class Token(BaseModel):

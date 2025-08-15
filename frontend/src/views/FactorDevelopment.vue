@@ -3,7 +3,7 @@
     <!-- 页面头部 -->
     <div class="page-header">
       <h1 class="page-title">
-        <el-icon><Calculator /></el-icon>
+        <el-icon><MagicStick /></el-icon>
         因子开发中心
       </h1>
       <p class="page-subtitle">使用AI助手或手动创建量化投资因子表达式</p>
@@ -90,7 +90,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { Calculator, Cpu, Download, Upload } from '@element-plus/icons-vue'
+import { MagicStick, Cpu, Download, Upload } from '@element-plus/icons-vue'
 
 // 导入子组件
 import AIFactorAssistant from '@/components/factor/AIFactorAssistant.vue'

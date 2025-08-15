@@ -110,7 +110,7 @@
           <el-card class="config-card" shadow="hover">
             <template #header>
               <div class="card-header">
-                <el-icon><Calculator /></el-icon>
+                <el-icon><MagicStick /></el-icon>
                 <span>计算配置</span>
               </div>
             </template>
@@ -460,7 +460,6 @@ import {
   MagicStick,
   Category,
   Database,
-  Calculator,
   EditPen,
   WarningFilled,
   ChatDotRound,

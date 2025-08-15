@@ -1,53 +1,156 @@
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">仪表盘</h1>
-      <p class="page-subtitle">量化投资策略研究平台概览</p>
+      <h1 class="page-title">
+        <el-icon><DataLine /></el-icon>
+        工作流程控制中心
+      </h1>
+      <p class="page-subtitle">AI驱动的量化投资策略研发平台</p>
     </div>
 
-    <!-- 统计卡片 -->
-    <el-row :gutter="16" class="mb-24">
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="stat-card">
-          <div class="stat-card-content">
-            <div class="stat-card-title">总实验数</div>
-            <div class="stat-card-value">{{ summary.totalExperiments }}</div>
-            <div class="stat-card-trend">
-              <el-icon><TrendCharts /></el-icon>
-              较昨日 +3
+    <!-- 系统状态概览 -->
+    <el-card class="status-overview-card" shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <el-icon><TrendCharts /></el-icon>
+          <span>系统状态</span>
+        </div>
+      </template>
+      <div class="status-content">
+        <div class="active-tasks">
+          <el-icon><Loading /></el-icon>
+          <span>活跃任务: {{ activeTasksCount }}个训练中 | {{ runningBacktests }}个回测中 | {{ deployedStrategies }}个部署运行</span>
+        </div>
+        <div class="smart-suggestions">
+          <el-icon><Lightning /></el-icon>
+          <span>建议操作: 查看LightGBM_v3训练结果 → 启动回测</span>
+        </div>
+      </div>
+    </el-card>
+
+    <!-- 工作流程快速启动 -->
+    <el-card class="workflow-card" shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <el-icon><ArrowRight /></el-icon>
+          <span>工作流程快速启动</span>
+        </div>
+      </template>
+      <el-row :gutter="20" class="workflow-options">
+        <el-col :xs="24" :sm="8">
+          <div class="workflow-option complete-research" @click="startCompleteResearch">
+            <div class="option-icon">
+              <el-icon><MagicStick /></el-icon>
+            </div>
+            <div class="option-content">
+              <h3>完整研发</h3>
+              <p>从因子开发到策略部署</p>
+              <el-button type="primary" size="small">开始研发</el-button>
             </div>
           </div>
-        </el-card>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="stat-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-          <div class="stat-card-content">
-            <div class="stat-card-title">运行中</div>
-            <div class="stat-card-value">{{ summary.runningExperiments }}</div>
-            <div class="stat-card-trend">
-              <el-icon><Loading /></el-icon>
-              实时更新
+        </el-col>
+        <el-col :xs="24" :sm="8">
+          <div class="workflow-option quick-backtest" @click="startQuickBacktest">
+            <div class="option-icon">
+              <el-icon><Lightning /></el-icon>
+            </div>
+            <div class="option-content">
+              <h3>快速回测</h3>
+              <p>使用现有模型快速验证策略</p>
+              <el-button type="success" size="small">快速验证</el-button>
             </div>
           </div>
-        </el-card>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-          <div class="stat-card-content">
-            <div class="stat-card-title">已完成</div>
-            <div class="stat-card-value">{{ summary.completedExperiments }}</div>
-            <div class="stat-card-trend">
-              <el-icon><SuccessFilled /></el-icon>
-              成功率 95%
+        </el-col>
+        <el-col :xs="24" :sm="8">
+          <div class="workflow-option manage-tasks" @click="manageAllTasks">
+            <div class="option-icon">
+              <el-icon><Clock /></el-icon>
+            </div>
+            <div class="option-content">
+              <h3>管理任务</h3>
+              <p>查看所有进度管理资源</p>
+              <el-button type="info" size="small">进入管理</el-button>
             </div>
           </div>
-        </el-card>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="6">
-        <el-card class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-          <div class="stat-card-content">
-            <div class="stat-card-title">失败数</div>
-            <div class="stat-card-value">{{ summary.failedExperiments }}</div>
+        </el-col>
+      </el-row>
+    </el-card>
+
+    <!-- 最近活动与结果 -->
+    <el-card class="recent-activities-card" shadow="hover">
+      <template #header>
+        <div class="card-header">
+          <el-icon><Clock /></el-icon>
+          <span>最近活动与结果</span>
+          <el-button type="text" @click="refreshData">
+            <el-icon><Refresh /></el-icon>
+            刷新
+          </el-button>
+        </div>
+      </template>
+      <div class="activities-content">
+        <div class="activity-tabs">
+          <el-tabs v-model="activeTab" class="demo-tabs">
+            <el-tab-pane label="因子开发" name="factors">
+              <div class="activity-list">
+                <div v-for="factor in recentFactors" :key="factor.id" class="activity-item">
+                  <div class="activity-icon">
+                    <el-icon><MagicStick /></el-icon>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-title">{{ factor.name }}</div>
+                    <div class="activity-desc">{{ factor.description }}</div>
+                    <div class="activity-time">{{ formatDate(factor.createdAt) }}</div>
+                  </div>
+                  <div class="activity-actions">
+                    <el-button type="text" size="small" @click="editFactor(factor.id)">编辑</el-button>
+                    <el-button type="text" size="small" @click="useFactor(factor.id)">使用</el-button>
+                  </div>
+                </div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="模型训练" name="training">
+              <div class="activity-list">
+                <div v-for="model in recentModels" :key="model.id" class="activity-item">
+                  <div class="activity-icon">
+                    <el-icon><Cpu /></el-icon>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-title">{{ model.name }}</div>
+                    <div class="activity-desc">准确率: {{ model.accuracy }}%</div>
+                    <div class="activity-time">{{ formatDate(model.createdAt) }}</div>
+                  </div>
+                  <div class="activity-actions">
+                    <el-button type="text" size="small" @click="viewModel(model.id)">查看</el-button>
+                    <el-button type="text" size="small" @click="startBacktest(model.id)">回测</el-button>
+                  </div>
+                </div>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane label="策略回测" name="backtest">
+              <div class="activity-list">
+                <div v-for="backtest in recentBacktests" :key="backtest.id" class="activity-item">
+                  <div class="activity-icon">
+                    <el-icon><TrendCharts /></el-icon>
+                  </div>
+                  <div class="activity-content">
+                    <div class="activity-title">{{ backtest.name }}</div>
+                    <div class="activity-desc">年化收益: {{ backtest.annualReturn }}%</div>
+                    <div class="activity-time">{{ formatDate(backtest.createdAt) }}</div>
+                  </div>
+                  <div class="activity-actions">
+                    <el-button type="text" size="small" @click="viewBacktest(backtest.id)">分析</el-button>
+                    <el-button type="text" size="small" @click="deployStrategy(backtest.id)">部署</el-button>
+                  </div>
+                </div>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+      </div>
+    </el-card>
+  </div>
+</template>
             <div class="stat-card-trend">
               <el-icon><WarningFilled /></el-icon>
               需关注
@@ -166,37 +269,39 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { 
-  TrendCharts, Loading, SuccessFilled, WarningFilled, 
-  Lightning, Plus, Clock, Refresh, ArrowRight 
+  TrendCharts, Loading, DataLine, Lightning, 
+  Clock, Refresh, ArrowRight, MagicStick, Cpu
 } from '@element-plus/icons-vue'
-import { useExperimentStore } from '@/stores/experiment'
 import { dashboardApi } from '@/api/experiment'
-import type { ExperimentStatus } from '@/types/experiment'
 
 const router = useRouter()
-const experimentStore = useExperimentStore()
 
 // 响应式数据
 const loading = ref(false)
-const summary = ref({
-  totalExperiments: 0,
-  runningExperiments: 0,
-  completedExperiments: 0,
-  failedExperiments: 0
-})
-const recentExperiments = ref<ExperimentStatus[]>([])
+const activeTab = ref('factors')
+
+// 系统状态数据
+const activeTasksCount = ref(0)
+const runningBacktests = ref(0)
+const deployedStrategies = ref(0)
+
+// 最近活动数据
+const recentFactors = ref([
+  { id: 1, name: '20日动量因子', description: '基于20日价格动量的技术指标', createdAt: '2025-08-15T10:30:00' },
+  { id: 2, name: '市盈率倒数因子', description: '基于PE倒数的价值因子', createdAt: '2025-08-14T16:20:00' }
+])
+
+const recentModels = ref([
+  { id: 1, name: 'LightGBM_v3', accuracy: 94.2, createdAt: '2025-08-15T14:30:00' },
+  { id: 2, name: 'XGBoost_test', accuracy: 91.8, createdAt: '2025-08-14T11:15:00' }
+])
+
+const recentBacktests = ref([
+  { id: 1, name: 'TopK_LightGBM_v3', annualReturn: 28.5, createdAt: '2025-08-15T09:45:00' },
+  { id: 2, name: 'LSTM_momentum', annualReturn: 25.1, createdAt: '2025-08-14T17:30:00' }
+])
 
 // 方法
-const getStatusText = (status: string) => {
-  const statusMap = {
-    pending: '等待中',
-    running: '运行中',
-    completed: '已完成',
-    failed: '失败'
-  }
-  return statusMap[status as keyof typeof statusMap] || status
-}
-
 const formatDate = (dateString: string) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('zh-CN', {
@@ -207,16 +312,51 @@ const formatDate = (dateString: string) => {
   })
 }
 
-const handleRowClick = (row: ExperimentStatus) => {
-  if (row.status === 'completed') {
-    router.push(`/experiment/${row.id}`)
-  } else {
-    ElMessage.info('实验尚未完成，无法查看详情')
-  }
+// 工作流程启动方法
+const startCompleteResearch = () => {
+  ElMessage.info('启动完整研发流程')
+  router.push('/factors')
 }
 
-const viewDetails = (id: string) => {
-  router.push(`/experiment/${id}`)
+const startQuickBacktest = () => {
+  ElMessage.info('启动快速回测')
+  router.push('/backtest')
+}
+
+const manageAllTasks = () => {
+  ElMessage.info('进入任务管理')
+  router.push('/training-management')
+}
+
+// 活动相关方法
+const editFactor = (factorId: number) => {
+  ElMessage.info(`编辑因子 ${factorId}`)
+  router.push(`/factors?edit=${factorId}`)
+}
+
+const useFactor = (factorId: number) => {
+  ElMessage.info(`使用因子 ${factorId}`)
+  router.push(`/training?factors=${factorId}`)
+}
+
+const viewModel = (modelId: number) => {
+  ElMessage.info(`查看模型 ${modelId}`)
+  router.push(`/training-management?model=${modelId}`)
+}
+
+const startBacktest = (modelId: number) => {
+  ElMessage.info(`开始回测模型 ${modelId}`)
+  router.push(`/backtest?model=${modelId}`)
+}
+
+const viewBacktest = (backtestId: number) => {
+  ElMessage.info(`查看回测结果 ${backtestId}`)
+  router.push(`/results?backtest=${backtestId}`)
+}
+
+const deployStrategy = (backtestId: number) => {
+  ElMessage.info(`部署策略 ${backtestId}`)
+  router.push(`/deployment?strategy=${backtestId}`)
 }
 
 const refreshData = async () => {
@@ -237,37 +377,22 @@ const loadDashboardData = async () => {
     const summaryResponse = await dashboardApi.getSummary()
     if (summaryResponse.data.success) {
       const data = summaryResponse.data.data
-      summary.value = {
-        totalExperiments: data.totalExperiments,
-        runningExperiments: data.runningExperiments,
-        completedExperiments: data.completedExperiments,
-        failedExperiments: data.failedExperiments
-      }
+      // 更新系统状态数据
+      activeTasksCount.value = data.running_experiments || 0
+      runningBacktests.value = data.running_experiments || 0  // 暂时使用相同数据
+      deployedStrategies.value = 1 // 模拟数据
     }
     
-    // 调用真实API获取最近实验列表
-    const recentResponse = await dashboardApi.getRecentExperiments()
-    if (recentResponse.data.success) {
-      recentExperiments.value = recentResponse.data.data.map((exp: any) => ({
-        id: exp.id,
-        name: exp.name,
-        status: exp.status,
-        progress: exp.progress || 0,
-        createdAt: exp.created_at || exp.createdAt,
-        completedAt: exp.completed_at || exp.completedAt
-      }))
-    }
+    // 在实际项目中，这里应该调用具体的API获取因子、模型、回测数据
+    // 目前使用模拟数据展示功能
+    console.log('Dashboard数据加载完成')
   } catch (error) {
     console.error('Failed to load dashboard data:', error)
     ElMessage.error('加载仪表盘数据失败')
-    // 如果API失败，使用基础的默认值
-    summary.value = {
-      totalExperiments: 0,
-      runningExperiments: 0,
-      completedExperiments: 0,
-      failedExperiments: 0
-    }
-    recentExperiments.value = []
+    // 如果API失败，使用模拟数据
+    activeTasksCount.value = 0
+    runningBacktests.value = 0
+    deployedStrategies.value = 0
   }
 }
 
@@ -278,74 +403,201 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.stat-card {
-  margin-bottom: 16px;
-}
-
-.stat-card :deep(.el-card__body) {
+.page-container {
   padding: 24px;
+  background-color: #f5f7fa;
+  min-height: calc(100vh - 60px);
 }
 
-.stat-card-content {
-  color: white;
-}
-
-.stat-card-title {
-  font-size: 14px;
-  opacity: 0.9;
-  margin-bottom: 8px;
-}
-
-.stat-card-value {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-
-.stat-card-trend {
-  font-size: 12px;
-  opacity: 0.8;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.quick-actions {
+.page-header {
+  margin-bottom: 24px;
   text-align: center;
 }
 
-.experiment-table :deep(.el-table__row) {
-  cursor: pointer;
+.page-title {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
-.experiment-table :deep(.el-table__row:hover) {
-  background: #f5f7fa;
+.page-subtitle {
+  margin: 0;
+  color: #7f8c8d;
+  font-size: 16px;
 }
 
-.status-badge {
-  padding: 4px 8px;
+.status-overview-card {
+  margin-bottom: 24px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.status-content {
+  padding: 16px 0;
+}
+
+.active-tasks, .smart-suggestions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #5a6c7d;
+}
+
+.active-tasks:last-child, .smart-suggestions:last-child {
+  margin-bottom: 0;
+}
+
+.workflow-card {
+  margin-bottom: 24px;
+}
+
+.workflow-options {
+  margin-top: 20px;
+}
+
+.workflow-option {
+  border: 2px solid #e1e8ed;
   border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workflow-option:hover {
+  border-color: #409eff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(64, 158, 255, 0.2);
+}
+
+.complete-research:hover {
+  border-color: #409eff;
+  box-shadow: 0 8px 25px rgba(64, 158, 255, 0.2);
+}
+
+.quick-backtest:hover {
+  border-color: #67c23a;
+  box-shadow: 0 8px 25px rgba(103, 194, 58, 0.2);
+}
+
+.manage-tasks:hover {
+  border-color: #909399;
+  box-shadow: 0 8px 25px rgba(144, 147, 153, 0.2);
+}
+
+.option-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: #409eff;
+}
+
+.quick-backtest .option-icon {
+  color: #67c23a;
+}
+
+.manage-tasks .option-icon {
+  color: #909399;
+}
+
+.option-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.option-content p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #7f8c8d;
+  line-height: 1.4;
+}
+
+.recent-activities-card {
+  background: white;
+}
+
+.activities-content {
+  padding: 0;
+}
+
+.activity-list {
+  min-height: 200px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.activity-item:hover {
+  background-color: #f8f9fa;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  margin-right: 16px;
+  font-size: 20px;
+  color: #409eff;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.activity-desc {
   font-size: 12px;
-  font-weight: 500;
+  color: #7f8c8d;
+  margin-bottom: 4px;
 }
 
-.status-badge.pending {
-  background: #e6f7ff;
-  color: #1890ff;
+.activity-time {
+  font-size: 12px;
+  color: #bdc3c7;
 }
 
-.status-badge.running {
-  background: #f6ffed;
-  color: #52c41a;
+.activity-actions {
+  display: flex;
+  gap: 8px;
 }
 
-.status-badge.completed {
-  background: #f0f9ff;
-  color: #1677ff;
+:deep(.el-tabs__header) {
+  margin: 0;
 }
 
-.status-badge.failed {
-  background: #fff2f0;
-  color: #ff4d4f;
+:deep(.el-tabs__content) {
+  padding: 0;
 }
 </style>

@@ -2,6 +2,14 @@
 
 基于 Vue 3 + TypeScript + Element Plus 构建的 Qlib 量化投资策略研究平台前端应用。
 
+## 当前状态
+
+✅ **项目已清理和配置完成**
+- 删除了无用文件：npm-cache、测试脚本、nginx配置
+- 依赖包已安装完成
+- 开发服务器已启动：http://localhost:9988
+- API连接配置：http://localhost:8000/api/v1
+
 ## 功能特性
 
 - 🎯 **仪表盘** - 实验概览和快速操作
@@ -64,7 +72,7 @@ npm install
 npm run dev
 ```
 
-应用将在 http://localhost:3000 启动，支持热重载。
+应用将在 http://localhost:9988 启动，支持热重载。
 
 ### 构建生产版本
 
@@ -141,25 +149,129 @@ npm run format
 - `GET /api/v1/experiments/:id` - 获取实验详情
 - `GET /api/v1/config/*` - 获取配置选项
 
-## 部署说明
+## 本地部署指南
 
-### 环境变量配置
+### 快速部署
+
+#### 1. 环境要求
+
+- **Node.js**: 16.0+ （当前使用 v23.10.0）
+- **npm**: 8.0+ （当前使用 v10.9.2）
+- **后端API**: 确保后端服务运行在 http://localhost:8000
+
+#### 2. 安装和启动
+
+```bash
+# 进入前端目录
+cd /Users/zhongxuan/Desktop/demo3/qlib-web/frontend
+
+# 安装依赖（如果还没安装）
+npm install
+
+# 启动开发服务器
+npm run dev
+```
+
+#### 3. 访问应用
+
+- **前端应用**: http://localhost:9988
+- **后端API**: http://localhost:8000
+- **API文档**: http://localhost:8000/api/v1/docs
+
+#### 4. 环境配置
+
+当前环境变量配置（`.env` 文件）：
+```bash
+VITE_APP_TITLE=Qlib Web Console
+VITE_API_BASE_URL=http://localhost:8000/api/v1
+VITE_NODE_ENV=development
+```
+
+### 生产部署
+
+#### 环境变量配置
 
 创建 `.env.production` 文件：
 
 ```bash
 VITE_APP_TITLE=Qlib Web Console
 VITE_API_BASE_URL=https://your-api-domain.com/api/v1
+VITE_NODE_ENV=production
 ```
 
-### 构建和部署
+#### 构建和部署
 
 ```bash
 # 构建生产版本
 npm run build
 
-# 部署 dist 目录到静态服务器
-# 如 Nginx、Apache 或 CDN
+# 构建完成后，dist/ 目录包含所有静态文件
+# 将 dist/ 目录部署到静态服务器（如 Nginx、Apache 或 CDN）
+```
+
+#### Nginx 配置示例
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /path/to/frontend/dist;
+    index index.html;
+
+    # SPA 路由支持
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # API 代理（可选）
+    location /api/ {
+        proxy_pass http://localhost:8000/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+### 故障排除
+
+#### 1. 端口占用
+如果端口9988被占用，可以指定其他端口：
+```bash
+npm run dev -- --port 3000
+```
+
+#### 2. API连接失败
+- 确保后端服务正在运行：`curl http://localhost:8000/health`
+- 检查CORS配置是否包含前端地址
+- 验证`.env`文件中的API地址是否正确
+
+#### 3. 依赖安装失败
+```bash
+# 清理缓存并重新安装
+rm -rf node_modules package-lock.json
+npm install
+```
+
+#### 4. 构建失败
+```bash
+# 检查TypeScript类型错误
+npm run build --verbose
+
+# 或者跳过类型检查（不推荐）
+vite build --mode development
+```
+
+### 开发模式调试
+
+#### 启用详细日志
+```bash
+DEBUG=vite:* npm run dev
+```
+
+#### 网络访问
+```bash
+npm run dev -- --host
+# 然后可以通过局域网IP访问
 ```
 
 ## 浏览器支持

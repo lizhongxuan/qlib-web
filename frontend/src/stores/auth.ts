@@ -59,20 +59,42 @@ export const useAuthStore = defineStore('auth', () => {
     
     try {
       const response = await api.post('/auth/login', credentials)
-      const { access_token, token_type, expires_in, user: userData } = response.data
       
-      const tokenData: Token = {
-        access_token,
-        refresh_token: null, // 后端暂时没有refresh_token
-        token_type,
-        expires_in
+      // 检查响应格式
+      if (!response.data || !response.data.success || !response.data.data) {
+        throw new Error('登录响应格式错误')
       }
       
-      setAuth(tokenData, userData)
+      const tokenData = response.data.data
+      const token_info: Token = {
+        access_token: tokenData.access_token,
+        refresh_token: tokenData.refresh_token || null,
+        token_type: tokenData.token_type || 'bearer',
+        expires_in: tokenData.expires_in || 3600
+      }
+      
+      // 设置token
+      token.value = token_info.access_token
+      refreshToken.value = token_info.refresh_token
+      localStorage.setItem('token', token_info.access_token)
+      if (token_info.refresh_token) {
+        localStorage.setItem('refresh_token', token_info.refresh_token)
+      }
+      
+      // 设置 API 默认请求头
+      api.defaults.headers.common['Authorization'] = `Bearer ${token_info.access_token}`
+      
+      // 获取用户信息
+      const userResponse = await api.get('/auth/me')
+      if (userResponse.data && userResponse.data.success && userResponse.data.data) {
+        user.value = userResponse.data.data
+        localStorage.setItem('user', JSON.stringify(userResponse.data.data))
+      }
+      
       return response.data
     } catch (error: any) {
       clearAuth()
-      throw new Error(error.response?.data?.detail || '登录失败')
+      throw new Error(error.response?.data?.detail || error.message || '登录失败')
     } finally {
       loading.value = false
     }
