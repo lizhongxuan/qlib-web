@@ -33,7 +33,7 @@ class AdvancedAnalysis(Base):
     __tablename__ = "advanced_analyses"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     creator_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 分析配置
@@ -106,7 +106,7 @@ class MetricUsage(Base):
     
     id = Column(Integer, primary_key=True, index=True)
     metric_id = Column(Integer, ForeignKey("custom_metrics.id"), nullable=False)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 使用信息
@@ -166,7 +166,7 @@ class ModelDiagnostics(Base):
     __tablename__ = "model_diagnostics"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     analysis_id = Column(Integer, ForeignKey("advanced_analyses.id"), nullable=True)
     
     # 诊断类型

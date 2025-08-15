@@ -114,7 +114,7 @@ class ShareAccessLogResponse(BaseModel):
 # 分享邀请
 class ShareInvitationCreate(BaseModel):
     """创建分享邀请"""
-    email: Optional[str] = Field(None, regex=r'^[^@]+@[^@]+\.[^@]+$')
+    email: Optional[str] = Field(None, pattern=r'^[^@]+@[^@]+\.[^@]+$')
     invited_user_id: Optional[int] = None
     permissions: SharePermission = SharePermission.VIEW
     expires_in_days: int = Field(7, ge=1, le=30)  # 邀请有效期（天数）

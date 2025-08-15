@@ -258,8 +258,8 @@ async def verify_email(
 
 @router.post("/resend-verification")
 async def resend_verification_email(
-    current_user: User = Depends(get_current_user),
     background_tasks: BackgroundTasks,
+    current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ) -> Any:
     """

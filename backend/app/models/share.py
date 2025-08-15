@@ -28,7 +28,7 @@ class ExperimentShare(Base):
     __tablename__ = "experiment_shares"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 分享配置

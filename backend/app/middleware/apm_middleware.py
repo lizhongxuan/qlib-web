@@ -6,8 +6,7 @@ import time
 import uuid
 from typing import Optional
 from fastapi import FastAPI, Request, Response
-from fastapi.middleware.base import BaseHTTPMiddleware
-from starlette.middleware.base import RequestResponseEndpoint
+from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
 from ..services.apm_service import apm_service
 

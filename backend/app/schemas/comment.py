@@ -12,7 +12,7 @@ from ..schemas.user import UserSummary
 class CommentBase(BaseModel):
     """评论基础信息"""
     content: str = Field(..., min_length=1, max_length=2000)
-    content_type: str = Field(default="text", regex="^(text|markdown|html)$")
+    content_type: str = Field(default="text", pattern="^(text|markdown|html)$")
     mentioned_users: Optional[List[int]] = None
 
 
@@ -25,7 +25,7 @@ class CommentCreate(CommentBase):
 class CommentUpdate(BaseModel):
     """更新评论"""
     content: Optional[str] = Field(None, min_length=1, max_length=2000)
-    content_type: Optional[str] = Field(None, regex="^(text|markdown|html)$")
+    content_type: Optional[str] = Field(None, pattern="^(text|markdown|html)$")
     mentioned_users: Optional[List[int]] = None
 
 
@@ -64,7 +64,7 @@ class CommentListResponse(BaseModel):
 # 点赞相关
 class LikeAction(BaseModel):
     """点赞操作"""
-    target_type: str = Field(..., regex="^(experiment|comment)$")
+    target_type: str = Field(..., pattern="^(experiment|comment)$")
     target_id: str
 
 

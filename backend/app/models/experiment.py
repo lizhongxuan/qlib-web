@@ -9,7 +9,7 @@ class Experiment(Base):
     """实验模型"""
     __tablename__ = f"{TABLE_PREFIX}experiments"
     
-    id = Column(String, primary_key=True, index=True)
+    id = Column(String(255), primary_key=True, index=True)
     name = Column(String(200), nullable=False, index=True)
     description = Column(Text, nullable=True)
     

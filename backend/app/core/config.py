@@ -1,9 +1,12 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 try:
     from pydantic_settings import BaseSettings
+    from pydantic import field_validator
+    PYDANTIC_V2 = True
 except ImportError:
-    from pydantic import BaseSettings
-from pydantic import AnyHttpUrl, validator
+    from pydantic import BaseSettings, validator
+    PYDANTIC_V2 = False
+from pydantic import AnyHttpUrl
 
 
 class Settings(BaseSettings):
@@ -30,16 +33,26 @@ class Settings(BaseSettings):
     SMTP_FROM_EMAIL: str = "noreply@qlib-web.com"
     SMTP_FROM_NAME: str = "Qlib Web Platform"
     
-    @validator("SECRET_KEY", pre=True)
-    def validate_secret_key(cls, v: str) -> str:
-        if not v or len(v) < 32:
-            raise ValueError("SECRET_KEY must be at least 32 characters long")
-        if v == "your-very-secure-secret-key-here":
-            raise ValueError("Please change the default SECRET_KEY in production")
-        return v
+    if PYDANTIC_V2:
+        @field_validator("SECRET_KEY")
+        @classmethod
+        def validate_secret_key(cls, v: str) -> str:
+            if not v or len(v) < 32:
+                raise ValueError("SECRET_KEY must be at least 32 characters long")
+            if v == "your-very-secure-secret-key-here":
+                raise ValueError("Please change the default SECRET_KEY in production")
+            return v
+    else:
+        @validator("SECRET_KEY", pre=True)
+        def validate_secret_key(cls, v: str) -> str:
+            if not v or len(v) < 32:
+                raise ValueError("SECRET_KEY must be at least 32 characters long")
+            if v == "your-very-secure-secret-key-here":
+                raise ValueError("Please change the default SECRET_KEY in production")
+            return v
     
     # 数据库配置
-    DATABASE_URL: str = "sqlite:///./qlib_web.db"
+    DATABASE_URL: str = "mysql+pymysql://root:lzx234258@localhost:3306/qlib_web?charset=utf8mb4"
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20
     
@@ -72,21 +85,34 @@ class Settings(BaseSettings):
     ALLOWED_METHODS: List[str] = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     ALLOWED_HEADERS: List[str] = ["*"]
     
-    @validator("ALLOWED_ORIGINS", pre=True)
-    def assemble_cors_origins(cls, v: str | List[str]) -> List[str]:
-        if isinstance(v, str) and not v.startswith("["):
-            return [i.strip() for i in v.split(",")]
-        elif isinstance(v, (list, str)):
-            return v
-        raise ValueError(v)
+    if PYDANTIC_V2:
+        @field_validator("ALLOWED_ORIGINS", mode="before")
+        @classmethod
+        def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+            if isinstance(v, str) and not v.startswith("["):
+                return [i.strip() for i in v.split(",")]
+            elif isinstance(v, (list, str)):
+                return v
+            raise ValueError(v)
+    else:
+        @validator("ALLOWED_ORIGINS", pre=True)
+        def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+            if isinstance(v, str) and not v.startswith("["):
+                return [i.strip() for i in v.split(",")]
+            elif isinstance(v, (list, str)):
+                return v
+            raise ValueError(v)
     
     # 监控配置
     ENABLE_METRICS: bool = True
     METRICS_PORT: int = 8001
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    if PYDANTIC_V2:
+        model_config = {"env_file": ".env", "case_sensitive": True}
+    else:
+        class Config:
+            env_file = ".env"
+            case_sensitive = True
 
 
 # 创建全局设置实例

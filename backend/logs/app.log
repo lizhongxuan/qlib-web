@@ -1,0 +1,1030 @@
+INFO:     Will watch for changes in these directories: ['/Users/zhongxuan/Desktop/demo3/qlib-web/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [35888] using WatchFiles
+INFO:     Started server process [35909]
+INFO:     Waiting for application startup.
+2025-08-15 13:37:22.571 | INFO     | app.main:lifespan:27 - Starting Qlib Web Console API v1.0.0
+2025-08-15 13:37:22.571 | INFO     | app.main:lifespan:30 - Initializing database...
+2025-08-15 13:37:22,598 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2025-08-15 13:37:22,598 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-08-15 13:37:22,598 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,598 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,599 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2025-08-15 13:37:22,599 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-08-15 13:37:22,599 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,599 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,600 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2025-08-15 13:37:22,600 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-08-15 13:37:22,600 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,600 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,601 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:37:22,601 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:37:22,601 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:37:22,601 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:37:22,601 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,601 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,607 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:37:22,607 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:37:22,607 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,607 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,608 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:37:22,608 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:37:22,608 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,608 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,609 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`users`
+2025-08-15 13:37:22,609 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`users`
+2025-08-15 13:37:22,609 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,609 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,611 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:37:22,611 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:37:22,611 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,611 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,613 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:37:22,613 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:37:22,613 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,613 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,614 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:37:22,614 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:37:22,614 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,614 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,616 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:37:22,616 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:37:22,616 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,616 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,617 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:37:22,617 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:37:22,617 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,617 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,619 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:37:22,619 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:37:22,619 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,619 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,620 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:37:22,620 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:37:22,620 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,620 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,624 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:37:22,624 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:37:22,625 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,625 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,628 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:37:22,628 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:37:22,628 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,628 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,631 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:37:22,631 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:37:22,631 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,631 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,632 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:37:22,632 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:37:22,632 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,632 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,633 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:37:22,633 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:37:22,633 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,633 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,634 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:37:22,634 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:37:22,634 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,634 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,635 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:37:22,635 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:37:22,635 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,635 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,636 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:37:22,636 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:37:22,636 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,636 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,637 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:37:22,637 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:37:22,637 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:37:22,637 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:37:22,638 INFO sqlalchemy.engine.Engine COMMIT
+2025-08-15 13:37:22,638 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-15 13:37:22.639 | INFO     | app.main:lifespan:34 - Starting APM service...
+2025-08-15 13:37:22.639 | SUCCESS  | app.main:lifespan:36 - APM service started successfully
+2025-08-15 13:37:22.639 | INFO     | app.main:lifespan:39 - Starting fault recovery service...
+2025-08-15 13:37:22.639 | SUCCESS  | app.main:lifespan:41 - Fault recovery service started successfully
+2025-08-15 13:37:22.639 | INFO     | app.main:lifespan:44 - Starting graceful degradation service...
+2025-08-15 13:37:22.639 | SUCCESS  | app.main:lifespan:46 - Graceful degradation service started successfully
+2025-08-15 13:37:22.639 | INFO     | app.main:lifespan:49 - Initializing Qlib...
+[35909:MainThread](2025-08-15 13:37:22,640) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[35909:MainThread](2025-08-15 13:37:22,992) INFO - qlib.Initialization - [__init__.py:75] - qlib successfully initialized based on client settings.
+[35909:MainThread](2025-08-15 13:37:22,993) INFO - qlib.Initialization - [__init__.py:77] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/zhongxuan/.qlib/qlib_data/cn_data')}
+2025-08-15 13:37:22.993 | SUCCESS  | app.utils.qlib_manager:init_qlib:42 - Qlib initialized successfully
+2025-08-15 13:37:22.993 | WARNING  | app.utils.qlib_manager:init_qlib:49 - Data validation failed: slice(None, 5, None)
+2025-08-15 13:37:22.993 | SUCCESS  | app.main:lifespan:53 - Qlib initialized successfully
+2025-08-15 13:37:22.993 | SUCCESS  | app.main:lifespan:57 - Application startup complete
+2025-08-15 13:37:25,001 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:37:25,001 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:37:25,002 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:37:25,002 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:37:25,002 INFO sqlalchemy.engine.Engine [generated in 0.00016s] {}
+2025-08-15 13:37:25,002 - sqlalchemy.engine.Engine - INFO - [generated in 0.00016s] {}
+2025-08-15 13:37:26,018 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:37:26,018 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:37:26,018 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:37:26,018 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:37:26,018 INFO sqlalchemy.engine.Engine [cached since 1.017s ago] {}
+2025-08-15 13:37:26,018 - sqlalchemy.engine.Engine - INFO - [cached since 1.017s ago] {}
+2025-08-15 13:37:28,039 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:37:28,039 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:37:28,040 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:37:28,040 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:37:28,040 INFO sqlalchemy.engine.Engine [cached since 3.038s ago] {}
+2025-08-15 13:37:28,040 - sqlalchemy.engine.Engine - INFO - [cached since 3.038s ago] {}
+2025-08-15 13:37:29,057 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:37:29,057 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:37:29,057 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:37:29,057 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:37:29,057 INFO sqlalchemy.engine.Engine [cached since 4.056s ago] {}
+2025-08-15 13:37:29,057 - sqlalchemy.engine.Engine - INFO - [cached since 4.056s ago] {}
+2025-08-15 13:37:29,067 - error_collector - ERROR - {"timestamp": "2025-08-15T13:37:29.067081", "level": "warning", "category": "system", "message": "服务 database 已降级至 moderate 级别", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 414, in _apply_degradation_rules\n    await self._apply_degradation(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 461, in _apply_degradation\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+INFO:     Application startup complete.
+2025-08-15 13:37:30,063 - error_collector - ERROR - {"timestamp": "2025-08-15T13:37:30.062918", "level": "warning", "category": "system", "message": "自动恢复成功: database - 服务 database 重启成功", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 417, in _monitor_loop\n    await self._apply_recovery_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 462, in _apply_recovery_rules\n    await self._execute_recovery_rule(rule, service_name, health)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 538, in _execute_recovery_rule\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:37:34.189 | INFO     | app.main:add_request_id:151 - Request completed: GET /health Status: 401 Time: 0.000s ID: fea0a655-455c-4c9d-b91b-21fbd59e9e1e
+INFO:     127.0.0.1:59101 - "GET /health HTTP/1.1" 401 Unauthorized
+2025-08-15 13:37:39.470 | INFO     | app.main:add_request_id:151 - Request completed: GET / Status: 401 Time: 0.000s ID: 0368a2b5-f19f-4353-9463-33fbb8a06d1d
+INFO:     127.0.0.1:59149 - "GET / HTTP/1.1" 401 Unauthorized
+2025-08-15 13:37:44.423 | INFO     | app.main:add_request_id:151 - Request completed: GET /api/v1/docs Status: 401 Time: 0.000s ID: 1a2bc9fd-e6bd-4993-b64b-585466b8dfea
+INFO:     127.0.0.1:59189 - "GET /api/v1/docs HTTP/1.1" 401 Unauthorized
+2025-08-15 13:38:01,065 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:01,065 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:01,066 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:01,066 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:01,066 INFO sqlalchemy.engine.Engine [cached since 36.07s ago] {}
+2025-08-15 13:38:01,066 - sqlalchemy.engine.Engine - INFO - [cached since 36.07s ago] {}
+2025-08-15 13:38:02,076 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:02,076 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:02,076 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:02,076 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:02,076 INFO sqlalchemy.engine.Engine [cached since 37.08s ago] {}
+2025-08-15 13:38:02,076 - sqlalchemy.engine.Engine - INFO - [cached since 37.08s ago] {}
+2025-08-15 13:38:04,087 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:04,087 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:04,088 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:04,088 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:04,088 INFO sqlalchemy.engine.Engine [cached since 39.09s ago] {}
+2025-08-15 13:38:04,088 - sqlalchemy.engine.Engine - INFO - [cached since 39.09s ago] {}
+2025-08-15 13:38:05,094 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:05,094 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:05,094 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:05,094 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:05,094 INFO sqlalchemy.engine.Engine [cached since 40.09s ago] {}
+2025-08-15 13:38:05,094 - sqlalchemy.engine.Engine - INFO - [cached since 40.09s ago] {}
+2025-08-15 13:38:29,073 - error_collector - ERROR - {"timestamp": "2025-08-15T13:38:29.072688", "level": "warning", "category": "system", "message": "服务 database 已自动恢复正常", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 418, in _apply_degradation_rules\n    await self._attempt_service_recovery(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 502, in _attempt_service_recovery\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:38:36,117 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:36,117 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:36,117 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:36,117 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:36,118 INFO sqlalchemy.engine.Engine [cached since 71.12s ago] {}
+2025-08-15 13:38:36,118 - sqlalchemy.engine.Engine - INFO - [cached since 71.12s ago] {}
+2025-08-15 13:38:37,137 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:37,137 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:37,137 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:37,137 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:37,137 INFO sqlalchemy.engine.Engine [cached since 72.14s ago] {}
+2025-08-15 13:38:37,137 - sqlalchemy.engine.Engine - INFO - [cached since 72.14s ago] {}
+2025-08-15 13:38:39,167 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:39,167 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:39,167 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:39,167 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:39,167 INFO sqlalchemy.engine.Engine [cached since 74.17s ago] {}
+2025-08-15 13:38:39,167 - sqlalchemy.engine.Engine - INFO - [cached since 74.17s ago] {}
+2025-08-15 13:38:40,186 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:38:40,186 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:38:40,187 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:38:40,187 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:38:40,187 INFO sqlalchemy.engine.Engine [cached since 75.19s ago] {}
+2025-08-15 13:38:40,187 - sqlalchemy.engine.Engine - INFO - [cached since 75.19s ago] {}
+2025-08-15 13:39:11,206 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:11,206 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:11,207 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:11,207 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:11,207 INFO sqlalchemy.engine.Engine [cached since 106.2s ago] {}
+2025-08-15 13:39:11,207 - sqlalchemy.engine.Engine - INFO - [cached since 106.2s ago] {}
+2025-08-15 13:39:12,226 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:12,226 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:12,227 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:12,227 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:12,227 INFO sqlalchemy.engine.Engine [cached since 107.2s ago] {}
+2025-08-15 13:39:12,227 - sqlalchemy.engine.Engine - INFO - [cached since 107.2s ago] {}
+2025-08-15 13:39:14,254 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:14,254 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:14,254 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:14,254 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:14,254 INFO sqlalchemy.engine.Engine [cached since 109.3s ago] {}
+2025-08-15 13:39:14,254 - sqlalchemy.engine.Engine - INFO - [cached since 109.3s ago] {}
+2025-08-15 13:39:15,270 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:15,270 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:15,271 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:15,271 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:15,271 INFO sqlalchemy.engine.Engine [cached since 110.3s ago] {}
+2025-08-15 13:39:15,271 - sqlalchemy.engine.Engine - INFO - [cached since 110.3s ago] {}
+2025-08-15 13:39:29,078 - error_collector - ERROR - {"timestamp": "2025-08-15T13:39:29.078195", "level": "warning", "category": "system", "message": "服务 database 已降级至 moderate 级别", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 414, in _apply_degradation_rules\n    await self._apply_degradation(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 461, in _apply_degradation\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:39:46,297 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:46,297 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:46,299 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:46,299 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:46,299 INFO sqlalchemy.engine.Engine [cached since 141.3s ago] {}
+2025-08-15 13:39:46,299 - sqlalchemy.engine.Engine - INFO - [cached since 141.3s ago] {}
+2025-08-15 13:39:47,320 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:47,320 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:47,320 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:47,320 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:47,320 INFO sqlalchemy.engine.Engine [cached since 142.3s ago] {}
+2025-08-15 13:39:47,320 - sqlalchemy.engine.Engine - INFO - [cached since 142.3s ago] {}
+2025-08-15 13:39:49,344 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:49,344 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:49,344 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:49,344 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:49,344 INFO sqlalchemy.engine.Engine [cached since 144.3s ago] {}
+2025-08-15 13:39:49,344 - sqlalchemy.engine.Engine - INFO - [cached since 144.3s ago] {}
+2025-08-15 13:39:50,366 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:39:50,366 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:39:50,366 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:39:50,366 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:39:50,367 INFO sqlalchemy.engine.Engine [cached since 145.4s ago] {}
+2025-08-15 13:39:50,367 - sqlalchemy.engine.Engine - INFO - [cached since 145.4s ago] {}
+2025-08-15 13:40:21,392 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:21,392 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:21,394 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:21,394 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:21,394 INFO sqlalchemy.engine.Engine [cached since 176.4s ago] {}
+2025-08-15 13:40:21,394 - sqlalchemy.engine.Engine - INFO - [cached since 176.4s ago] {}
+2025-08-15 13:40:22,409 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:22,409 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:22,410 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:22,410 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:22,410 INFO sqlalchemy.engine.Engine [cached since 177.4s ago] {}
+2025-08-15 13:40:22,410 - sqlalchemy.engine.Engine - INFO - [cached since 177.4s ago] {}
+2025-08-15 13:40:24,433 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:24,433 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:24,434 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:24,434 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:24,434 INFO sqlalchemy.engine.Engine [cached since 179.4s ago] {}
+2025-08-15 13:40:24,434 - sqlalchemy.engine.Engine - INFO - [cached since 179.4s ago] {}
+2025-08-15 13:40:25,449 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:25,449 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:25,449 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:25,449 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:25,449 INFO sqlalchemy.engine.Engine [cached since 180.5s ago] {}
+2025-08-15 13:40:25,449 - sqlalchemy.engine.Engine - INFO - [cached since 180.5s ago] {}
+2025-08-15 13:40:56,482 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:56,482 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:56,484 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:56,484 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:56,484 INFO sqlalchemy.engine.Engine [cached since 211.5s ago] {}
+2025-08-15 13:40:56,484 - sqlalchemy.engine.Engine - INFO - [cached since 211.5s ago] {}
+2025-08-15 13:40:57,502 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:57,502 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:57,502 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:57,502 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:57,503 INFO sqlalchemy.engine.Engine [cached since 212.5s ago] {}
+2025-08-15 13:40:57,503 - sqlalchemy.engine.Engine - INFO - [cached since 212.5s ago] {}
+2025-08-15 13:40:59,549 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:40:59,549 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:40:59,549 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:40:59,549 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:40:59,549 INFO sqlalchemy.engine.Engine [cached since 214.6s ago] {}
+2025-08-15 13:40:59,549 - sqlalchemy.engine.Engine - INFO - [cached since 214.6s ago] {}
+2025-08-15 13:41:00,552 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:41:00,552 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:41:00,552 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:41:00,552 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:41:00,552 INFO sqlalchemy.engine.Engine [cached since 215.6s ago] {}
+2025-08-15 13:41:00,552 - sqlalchemy.engine.Engine - INFO - [cached since 215.6s ago] {}
+2025-08-15 13:41:30,038 - error_collector - ERROR - {"timestamp": "2025-08-15T13:41:30.037207", "level": "warning", "category": "system", "message": "服务 database 已自动恢复正常", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 418, in _apply_degradation_rules\n    await self._attempt_service_recovery(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 502, in _attempt_service_recovery\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:41:31,559 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:41:31,559 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:41:31,560 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:41:31,560 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:41:31,560 INFO sqlalchemy.engine.Engine [cached since 246.6s ago] {}
+2025-08-15 13:41:31,560 - sqlalchemy.engine.Engine - INFO - [cached since 246.6s ago] {}
+2025-08-15 13:41:32,570 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:41:32,570 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:41:32,570 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:41:32,570 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:41:32,570 INFO sqlalchemy.engine.Engine [cached since 247.6s ago] {}
+2025-08-15 13:41:32,570 - sqlalchemy.engine.Engine - INFO - [cached since 247.6s ago] {}
+2025-08-15 13:41:34,579 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:41:34,579 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:41:34,580 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:41:34,580 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:41:34,580 INFO sqlalchemy.engine.Engine [cached since 249.6s ago] {}
+2025-08-15 13:41:34,580 - sqlalchemy.engine.Engine - INFO - [cached since 249.6s ago] {}
+2025-08-15 13:41:35,585 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:41:35,585 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:41:35,585 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:41:35,585 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:41:35,585 INFO sqlalchemy.engine.Engine [cached since 250.6s ago] {}
+2025-08-15 13:41:35,585 - sqlalchemy.engine.Engine - INFO - [cached since 250.6s ago] {}
+2025-08-15 13:42:06,594 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:06,594 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:06,595 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:06,595 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:06,595 INFO sqlalchemy.engine.Engine [cached since 281.6s ago] {}
+2025-08-15 13:42:06,595 - sqlalchemy.engine.Engine - INFO - [cached since 281.6s ago] {}
+2025-08-15 13:42:07,602 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:07,602 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:07,602 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:07,602 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:07,602 INFO sqlalchemy.engine.Engine [cached since 282.6s ago] {}
+2025-08-15 13:42:07,602 - sqlalchemy.engine.Engine - INFO - [cached since 282.6s ago] {}
+2025-08-15 13:42:09,610 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:09,610 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:09,610 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:09,610 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:09,610 INFO sqlalchemy.engine.Engine [cached since 284.6s ago] {}
+2025-08-15 13:42:09,610 - sqlalchemy.engine.Engine - INFO - [cached since 284.6s ago] {}
+2025-08-15 13:42:10,615 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:10,615 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:10,620 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:10,620 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:10,624 INFO sqlalchemy.engine.Engine [cached since 285.6s ago] {}
+2025-08-15 13:42:10,624 - sqlalchemy.engine.Engine - INFO - [cached since 285.6s ago] {}
+2025-08-15 13:42:27.909 | INFO     | app.main:add_request_id:151 - Request completed: GET / Status: 401 Time: 0.001s ID: 5b5db159-ea2a-4a7d-899e-d464768ea725
+INFO:     127.0.0.1:61042 - "GET / HTTP/1.1" 401 Unauthorized
+2025-08-15 13:42:41,651 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:41,651 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:41,654 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:41,654 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:41,654 INFO sqlalchemy.engine.Engine [cached since 316.7s ago] {}
+2025-08-15 13:42:41,654 - sqlalchemy.engine.Engine - INFO - [cached since 316.7s ago] {}
+2025-08-15 13:42:42,680 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:42,680 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:42,681 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:42,681 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:42,681 INFO sqlalchemy.engine.Engine [cached since 317.7s ago] {}
+2025-08-15 13:42:42,681 - sqlalchemy.engine.Engine - INFO - [cached since 317.7s ago] {}
+WARNING:  WatchFiles detected changes in 'run_simple_tests.py'. Reloading...
+2025-08-15 13:42:44,701 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:44,701 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:44,702 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:44,702 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:44,702 INFO sqlalchemy.engine.Engine [cached since 319.7s ago] {}
+2025-08-15 13:42:44,702 - sqlalchemy.engine.Engine - INFO - [cached since 319.7s ago] {}
+2025-08-15 13:42:45,720 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:45,720 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:45,721 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:45,721 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:45,721 INFO sqlalchemy.engine.Engine [cached since 320.7s ago] {}
+2025-08-15 13:42:45,721 - sqlalchemy.engine.Engine - INFO - [cached since 320.7s ago] {}
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-15 13:42:46,726 - error_collector - ERROR - {"timestamp": "2025-08-15T13:42:46.725854", "level": "warning", "category": "system", "message": "自动恢复成功: database - 服务 database 重启成功", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 417, in _monitor_loop\n    await self._apply_recovery_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 462, in _apply_recovery_rules\n    await self._execute_recovery_rule(rule, service_name, health)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 538, in _execute_recovery_rule\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:42:46.726 | INFO     | app.main:lifespan:62 - Shutting down APM service...
+2025-08-15 13:42:46.727 | INFO     | app.main:lifespan:65 - Shutting down fault recovery service...
+2025-08-15 13:42:46.727 | INFO     | app.main:lifespan:68 - Shutting down graceful degradation service...
+2025-08-15 13:42:46.727 | INFO     | app.main:lifespan:71 - Application shutdown complete
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35909]
+INFO:     Started server process [42841]
+INFO:     Waiting for application startup.
+2025-08-15 13:42:48.518 | INFO     | app.main:lifespan:27 - Starting Qlib Web Console API v1.0.0
+2025-08-15 13:42:48.519 | INFO     | app.main:lifespan:30 - Initializing database...
+2025-08-15 13:42:48,530 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2025-08-15 13:42:48,530 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-08-15 13:42:48,530 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,530 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,532 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2025-08-15 13:42:48,532 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-08-15 13:42:48,532 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,532 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,533 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2025-08-15 13:42:48,533 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-08-15 13:42:48,533 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,533 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,534 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:48,534 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:48,534 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:42:48,534 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:42:48,534 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,534 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,539 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:42:48,539 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:42:48,539 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,539 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,540 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:42:48,540 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:42:48,540 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,540 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,541 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`users`
+2025-08-15 13:42:48,541 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`users`
+2025-08-15 13:42:48,541 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,541 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,542 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:42:48,542 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:42:48,542 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,542 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,544 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:42:48,544 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:42:48,544 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,544 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,545 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:42:48,545 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:42:48,545 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,545 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,546 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:42:48,546 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:42:48,546 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,546 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,547 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:42:48,547 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:42:48,547 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,547 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,548 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:42:48,548 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:42:48,548 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,548 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,549 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:42:48,549 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:42:48,549 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,549 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,551 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:42:48,551 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:42:48,551 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,551 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,552 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:42:48,552 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:42:48,552 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,552 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,553 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:42:48,553 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:42:48,553 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,553 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,554 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:42:48,554 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:42:48,554 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,554 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,555 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:42:48,555 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:42:48,555 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,555 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,555 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:42:48,555 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:42:48,556 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,556 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,556 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:42:48,556 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:42:48,556 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,556 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,557 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:42:48,557 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:42:48,557 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,557 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,559 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:42:48,559 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:42:48,559 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:42:48,559 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:42:48,560 INFO sqlalchemy.engine.Engine COMMIT
+2025-08-15 13:42:48,560 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-15 13:42:48.561 | INFO     | app.main:lifespan:34 - Starting APM service...
+2025-08-15 13:42:48.561 | SUCCESS  | app.main:lifespan:36 - APM service started successfully
+2025-08-15 13:42:48.561 | INFO     | app.main:lifespan:39 - Starting fault recovery service...
+2025-08-15 13:42:48.561 | SUCCESS  | app.main:lifespan:41 - Fault recovery service started successfully
+2025-08-15 13:42:48.561 | INFO     | app.main:lifespan:44 - Starting graceful degradation service...
+2025-08-15 13:42:48.561 | SUCCESS  | app.main:lifespan:46 - Graceful degradation service started successfully
+2025-08-15 13:42:48.561 | INFO     | app.main:lifespan:49 - Initializing Qlib...
+[42841:MainThread](2025-08-15 13:42:48,562) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[42841:MainThread](2025-08-15 13:42:48,877) INFO - qlib.Initialization - [__init__.py:75] - qlib successfully initialized based on client settings.
+[42841:MainThread](2025-08-15 13:42:48,877) INFO - qlib.Initialization - [__init__.py:77] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/zhongxuan/.qlib/qlib_data/cn_data')}
+2025-08-15 13:42:48.877 | SUCCESS  | app.utils.qlib_manager:init_qlib:42 - Qlib initialized successfully
+2025-08-15 13:42:48.878 | WARNING  | app.utils.qlib_manager:init_qlib:49 - Data validation failed: slice(None, 5, None)
+2025-08-15 13:42:48.878 | SUCCESS  | app.main:lifespan:53 - Qlib initialized successfully
+2025-08-15 13:42:48.878 | SUCCESS  | app.main:lifespan:57 - Application startup complete
+2025-08-15 13:42:50,890 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:50,890 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:50,891 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:50,891 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:50,891 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {}
+2025-08-15 13:42:50,891 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] {}
+2025-08-15 13:42:51,912 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:51,912 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:51,912 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:51,912 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:51,913 INFO sqlalchemy.engine.Engine [cached since 1.022s ago] {}
+2025-08-15 13:42:51,913 - sqlalchemy.engine.Engine - INFO - [cached since 1.022s ago] {}
+2025-08-15 13:42:53,931 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:53,931 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:53,932 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:53,932 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:53,932 INFO sqlalchemy.engine.Engine [cached since 3.041s ago] {}
+2025-08-15 13:42:53,932 - sqlalchemy.engine.Engine - INFO - [cached since 3.041s ago] {}
+2025-08-15 13:42:54,948 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:42:54,948 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:42:54,948 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:42:54,948 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:42:54,948 INFO sqlalchemy.engine.Engine [cached since 4.058s ago] {}
+2025-08-15 13:42:54,948 - sqlalchemy.engine.Engine - INFO - [cached since 4.058s ago] {}
+2025-08-15 13:42:54,955 - error_collector - ERROR - {"timestamp": "2025-08-15T13:42:54.955271", "level": "warning", "category": "system", "message": "服务 database 已降级至 moderate 级别", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 414, in _apply_degradation_rules\n    await self._apply_degradation(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 461, in _apply_degradation\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+INFO:     Application startup complete.
+2025-08-15 13:42:55,951 - error_collector - ERROR - {"timestamp": "2025-08-15T13:42:55.951234", "level": "warning", "category": "system", "message": "自动恢复成功: database - 服务 database 重启成功", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 417, in _monitor_loop\n    await self._apply_recovery_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 462, in _apply_recovery_rules\n    await self._execute_recovery_rule(rule, service_name, health)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 538, in _execute_recovery_rule\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:43:26,980 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:43:26,980 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:43:26,982 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:43:26,982 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:43:26,982 INFO sqlalchemy.engine.Engine [cached since 36.09s ago] {}
+2025-08-15 13:43:26,982 - sqlalchemy.engine.Engine - INFO - [cached since 36.09s ago] {}
+2025-08-15 13:43:28,005 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:43:28,005 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:43:28,006 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:43:28,006 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:43:28,006 INFO sqlalchemy.engine.Engine [cached since 37.12s ago] {}
+2025-08-15 13:43:28,006 - sqlalchemy.engine.Engine - INFO - [cached since 37.12s ago] {}
+2025-08-15 13:43:30,026 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:43:30,026 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:43:30,026 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:43:30,026 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:43:30,026 INFO sqlalchemy.engine.Engine [cached since 39.14s ago] {}
+2025-08-15 13:43:30,026 - sqlalchemy.engine.Engine - INFO - [cached since 39.14s ago] {}
+2025-08-15 13:43:31,045 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:43:31,045 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:43:31,045 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:43:31,045 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:43:31,045 INFO sqlalchemy.engine.Engine [cached since 40.16s ago] {}
+2025-08-15 13:43:31,045 - sqlalchemy.engine.Engine - INFO - [cached since 40.16s ago] {}
+2025-08-15 13:43:53.115 | INFO     | app.main:add_request_id:151 - Request completed: GET /api/v1/docs Status: 401 Time: 0.001s ID: 0fcf0118-06f9-4908-82be-d31f2f35e6ca
+INFO:     127.0.0.1:61526 - "GET /api/v1/docs HTTP/1.1" 401 Unauthorized
+2025-08-15 13:43:54,957 - error_collector - ERROR - {"timestamp": "2025-08-15T13:43:54.956976", "level": "warning", "category": "system", "message": "服务 database 已自动恢复正常", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 418, in _apply_degradation_rules\n    await self._attempt_service_recovery(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 502, in _attempt_service_recovery\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:44:02,052 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:02,052 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:02,054 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:02,054 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:02,054 INFO sqlalchemy.engine.Engine [cached since 71.17s ago] {}
+2025-08-15 13:44:02,054 - sqlalchemy.engine.Engine - INFO - [cached since 71.17s ago] {}
+2025-08-15 13:44:03,062 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:03,062 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:03,063 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:03,063 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:03,063 INFO sqlalchemy.engine.Engine [cached since 72.17s ago] {}
+2025-08-15 13:44:03,063 - sqlalchemy.engine.Engine - INFO - [cached since 72.17s ago] {}
+2025-08-15 13:44:05,076 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:05,076 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:05,077 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:05,077 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:05,077 INFO sqlalchemy.engine.Engine [cached since 74.19s ago] {}
+2025-08-15 13:44:05,077 - sqlalchemy.engine.Engine - INFO - [cached since 74.19s ago] {}
+2025-08-15 13:44:06,079 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:06,079 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:06,079 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:06,079 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:06,080 INFO sqlalchemy.engine.Engine [cached since 75.19s ago] {}
+2025-08-15 13:44:06,080 - sqlalchemy.engine.Engine - INFO - [cached since 75.19s ago] {}
+2025-08-15 13:44:37,089 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:37,089 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:37,090 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:37,090 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:37,090 INFO sqlalchemy.engine.Engine [cached since 106.2s ago] {}
+2025-08-15 13:44:37,090 - sqlalchemy.engine.Engine - INFO - [cached since 106.2s ago] {}
+2025-08-15 13:44:38,101 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:38,101 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:38,102 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:38,102 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:38,102 INFO sqlalchemy.engine.Engine [cached since 107.2s ago] {}
+2025-08-15 13:44:38,102 - sqlalchemy.engine.Engine - INFO - [cached since 107.2s ago] {}
+2025-08-15 13:44:40,111 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:40,111 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:40,111 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:40,111 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:40,111 INFO sqlalchemy.engine.Engine [cached since 109.2s ago] {}
+2025-08-15 13:44:40,111 - sqlalchemy.engine.Engine - INFO - [cached since 109.2s ago] {}
+2025-08-15 13:44:41,115 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:44:41,115 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:44:41,115 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:44:41,115 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:44:41,115 INFO sqlalchemy.engine.Engine [cached since 110.2s ago] {}
+2025-08-15 13:44:41,115 - sqlalchemy.engine.Engine - INFO - [cached since 110.2s ago] {}
+WARNING:  WatchFiles detected changes in 'app/middleware/security_middleware.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-15 13:45:10.330 | INFO     | app.main:lifespan:62 - Shutting down APM service...
+2025-08-15 13:45:10.331 | INFO     | app.main:lifespan:65 - Shutting down fault recovery service...
+2025-08-15 13:45:10.331 | INFO     | app.main:lifespan:68 - Shutting down graceful degradation service...
+2025-08-15 13:45:10.331 | INFO     | app.main:lifespan:71 - Application shutdown complete
+INFO:     Application shutdown complete.
+INFO:     Finished server process [42841]
+INFO:     Started server process [45775]
+INFO:     Waiting for application startup.
+2025-08-15 13:45:12.201 | INFO     | app.main:lifespan:27 - Starting Qlib Web Console API v1.0.0
+2025-08-15 13:45:12.201 | INFO     | app.main:lifespan:30 - Initializing database...
+2025-08-15 13:45:12,214 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2025-08-15 13:45:12,214 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-08-15 13:45:12,215 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,215 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,216 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2025-08-15 13:45:12,216 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-08-15 13:45:12,216 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,216 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,216 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2025-08-15 13:45:12,216 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-08-15 13:45:12,216 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,216 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,217 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:12,217 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:12,217 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:45:12,217 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:45:12,218 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,218 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,223 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:45:12,223 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:45:12,223 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,223 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,225 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:45:12,225 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:45:12,225 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,225 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,226 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`users`
+2025-08-15 13:45:12,226 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`users`
+2025-08-15 13:45:12,226 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,226 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,227 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:45:12,227 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:45:12,227 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,227 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,228 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:45:12,228 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:45:12,228 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,228 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,229 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:45:12,229 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:45:12,229 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,229 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,230 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:45:12,230 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:45:12,230 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,230 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,231 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:45:12,231 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:45:12,231 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,231 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,232 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:45:12,232 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:45:12,232 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,232 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,233 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:45:12,233 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:45:12,233 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,233 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,234 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:45:12,234 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:45:12,234 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,234 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,235 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:45:12,235 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:45:12,235 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,235 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,236 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:45:12,236 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:45:12,236 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,236 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,237 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:45:12,237 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:45:12,237 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,237 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,238 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:45:12,238 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:45:12,238 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,238 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,239 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:45:12,239 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:45:12,239 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,239 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,240 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:45:12,240 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:45:12,240 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,240 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,241 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:45:12,241 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:45:12,241 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,241 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,242 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:45:12,242 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:45:12,242 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:12,242 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:12,244 INFO sqlalchemy.engine.Engine COMMIT
+2025-08-15 13:45:12,244 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-15 13:45:12.245 | INFO     | app.main:lifespan:34 - Starting APM service...
+2025-08-15 13:45:12.245 | SUCCESS  | app.main:lifespan:36 - APM service started successfully
+2025-08-15 13:45:12.245 | INFO     | app.main:lifespan:39 - Starting fault recovery service...
+2025-08-15 13:45:12.245 | SUCCESS  | app.main:lifespan:41 - Fault recovery service started successfully
+2025-08-15 13:45:12.245 | INFO     | app.main:lifespan:44 - Starting graceful degradation service...
+2025-08-15 13:45:12.245 | SUCCESS  | app.main:lifespan:46 - Graceful degradation service started successfully
+2025-08-15 13:45:12.245 | INFO     | app.main:lifespan:49 - Initializing Qlib...
+[45775:MainThread](2025-08-15 13:45:12,245) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[45775:MainThread](2025-08-15 13:45:12,547) INFO - qlib.Initialization - [__init__.py:75] - qlib successfully initialized based on client settings.
+[45775:MainThread](2025-08-15 13:45:12,547) INFO - qlib.Initialization - [__init__.py:77] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/zhongxuan/.qlib/qlib_data/cn_data')}
+2025-08-15 13:45:12.548 | SUCCESS  | app.utils.qlib_manager:init_qlib:42 - Qlib initialized successfully
+2025-08-15 13:45:12.548 | WARNING  | app.utils.qlib_manager:init_qlib:49 - Data validation failed: slice(None, 5, None)
+2025-08-15 13:45:12.548 | SUCCESS  | app.main:lifespan:53 - Qlib initialized successfully
+2025-08-15 13:45:12.548 | SUCCESS  | app.main:lifespan:57 - Application startup complete
+2025-08-15 13:45:14,563 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:14,563 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:14,575 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:14,575 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:14,575 INFO sqlalchemy.engine.Engine [generated in 0.00393s] {}
+2025-08-15 13:45:14,575 - sqlalchemy.engine.Engine - INFO - [generated in 0.00393s] {}
+2025-08-15 13:45:15,608 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:15,608 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:15,608 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:15,608 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:15,608 INFO sqlalchemy.engine.Engine [cached since 1.037s ago] {}
+2025-08-15 13:45:15,608 - sqlalchemy.engine.Engine - INFO - [cached since 1.037s ago] {}
+2025-08-15 13:45:17,627 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:17,627 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:17,628 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:17,628 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:17,628 INFO sqlalchemy.engine.Engine [cached since 3.057s ago] {}
+2025-08-15 13:45:17,628 - sqlalchemy.engine.Engine - INFO - [cached since 3.057s ago] {}
+2025-08-15 13:45:18,647 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:18,647 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:18,647 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:18,647 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:18,647 INFO sqlalchemy.engine.Engine [cached since 4.076s ago] {}
+2025-08-15 13:45:18,647 - sqlalchemy.engine.Engine - INFO - [cached since 4.076s ago] {}
+2025-08-15 13:45:18,655 - error_collector - ERROR - {"timestamp": "2025-08-15T13:45:18.654813", "level": "warning", "category": "system", "message": "服务 database 已降级至 moderate 级别", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 414, in _apply_degradation_rules\n    await self._apply_degradation(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 461, in _apply_degradation\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+INFO:     Application startup complete.
+2025-08-15 13:45:19,651 - error_collector - ERROR - {"timestamp": "2025-08-15T13:45:19.651042", "level": "warning", "category": "system", "message": "自动恢复成功: database - 服务 database 重启成功", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 417, in _monitor_loop\n    await self._apply_recovery_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 462, in _apply_recovery_rules\n    await self._execute_recovery_rule(rule, service_name, health)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 538, in _execute_recovery_rule\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:45:20.484 | INFO     | app.main:add_request_id:151 - Request completed: GET / Status: 200 Time: 0.001s ID: 15dffc41-687b-47ae-9b81-4a5f440c5a8d
+INFO:     127.0.0.1:62091 - "GET / HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'test_validation.py', 'test_connection.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-08-15 13:45:25.123 | INFO     | app.main:lifespan:62 - Shutting down APM service...
+2025-08-15 13:45:25.124 | INFO     | app.main:lifespan:65 - Shutting down fault recovery service...
+2025-08-15 13:45:25.124 | INFO     | app.main:lifespan:68 - Shutting down graceful degradation service...
+2025-08-15 13:45:25.124 | INFO     | app.main:lifespan:71 - Application shutdown complete
+INFO:     Application shutdown complete.
+INFO:     Finished server process [45775]
+INFO:     Started server process [46232]
+INFO:     Waiting for application startup.
+2025-08-15 13:45:27.200 | INFO     | app.main:lifespan:27 - Starting Qlib Web Console API v1.0.0
+2025-08-15 13:45:27.200 | INFO     | app.main:lifespan:30 - Initializing database...
+2025-08-15 13:45:27,213 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2025-08-15 13:45:27,213 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2025-08-15 13:45:27,213 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,213 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,215 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2025-08-15 13:45:27,215 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2025-08-15 13:45:27,215 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,215 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,216 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2025-08-15 13:45:27,216 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2025-08-15 13:45:27,216 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,216 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,217 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:27,217 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:27,217 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:45:27,217 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_experiments`
+2025-08-15 13:45:27,217 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,217 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,223 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:45:27,223 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`qlib_tasks`
+2025-08-15 13:45:27,223 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,223 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,225 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:45:27,225 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_team_association`
+2025-08-15 13:45:27,225 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,225 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,226 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`users`
+2025-08-15 13:45:27,226 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`users`
+2025-08-15 13:45:27,226 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,226 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,227 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:45:27,227 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`teams`
+2025-08-15 13:45:27,227 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,227 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,228 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:45:27,228 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`user_sessions`
+2025-08-15 13:45:27,228 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,228 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,229 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:45:27,229 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`password_reset_tokens`
+2025-08-15 13:45:27,229 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,229 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,230 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:45:27,230 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`email_verification_tokens`
+2025-08-15 13:45:27,230 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,230 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,232 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:45:27,232 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_templates`
+2025-08-15 13:45:27,232 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,232 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,233 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:45:27,233 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_usage`
+2025-08-15 13:45:27,233 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,233 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,234 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:45:27,234 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`template_categories`
+2025-08-15 13:45:27,234 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,234 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,235 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:45:27,235 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_shares`
+2025-08-15 13:45:27,235 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,235 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,240 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:45:27,240 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_access_logs`
+2025-08-15 13:45:27,240 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,240 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,241 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:45:27,241 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`share_invitations`
+2025-08-15 13:45:27,241 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,241 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,242 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:45:27,242 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_comments`
+2025-08-15 13:45:27,242 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,242 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,243 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:45:27,243 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`comment_likes`
+2025-08-15 13:45:27,243 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,243 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,244 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:45:27,244 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_likes`
+2025-08-15 13:45:27,244 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,244 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,245 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:45:27,245 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_favorites`
+2025-08-15 13:45:27,246 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,246 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,247 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:45:27,247 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`team_activities`
+2025-08-15 13:45:27,247 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,247 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,248 INFO sqlalchemy.engine.Engine DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:45:27,248 - sqlalchemy.engine.Engine - INFO - DESCRIBE `qlib_web`.`experiment_ratings`
+2025-08-15 13:45:27,248 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-08-15 13:45:27,248 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2025-08-15 13:45:27,250 INFO sqlalchemy.engine.Engine COMMIT
+2025-08-15 13:45:27,250 - sqlalchemy.engine.Engine - INFO - COMMIT
+2025-08-15 13:45:27.251 | INFO     | app.main:lifespan:34 - Starting APM service...
+2025-08-15 13:45:27.251 | SUCCESS  | app.main:lifespan:36 - APM service started successfully
+2025-08-15 13:45:27.252 | INFO     | app.main:lifespan:39 - Starting fault recovery service...
+2025-08-15 13:45:27.252 | SUCCESS  | app.main:lifespan:41 - Fault recovery service started successfully
+2025-08-15 13:45:27.252 | INFO     | app.main:lifespan:44 - Starting graceful degradation service...
+2025-08-15 13:45:27.252 | SUCCESS  | app.main:lifespan:46 - Graceful degradation service started successfully
+2025-08-15 13:45:27.252 | INFO     | app.main:lifespan:49 - Initializing Qlib...
+[46232:MainThread](2025-08-15 13:45:27,252) INFO - qlib.Initialization - [config.py:452] - default_conf: client.
+[46232:MainThread](2025-08-15 13:45:27,569) INFO - qlib.Initialization - [__init__.py:75] - qlib successfully initialized based on client settings.
+[46232:MainThread](2025-08-15 13:45:27,570) INFO - qlib.Initialization - [__init__.py:77] - data_path={'__DEFAULT_FREQ': PosixPath('/Users/zhongxuan/.qlib/qlib_data/cn_data')}
+2025-08-15 13:45:27.570 | SUCCESS  | app.utils.qlib_manager:init_qlib:42 - Qlib initialized successfully
+2025-08-15 13:45:27.570 | WARNING  | app.utils.qlib_manager:init_qlib:49 - Data validation failed: slice(None, 5, None)
+2025-08-15 13:45:27.570 | SUCCESS  | app.main:lifespan:53 - Qlib initialized successfully
+2025-08-15 13:45:27.570 | SUCCESS  | app.main:lifespan:57 - Application startup complete
+2025-08-15 13:45:29,579 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:29,579 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:29,580 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:29,580 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:29,580 INFO sqlalchemy.engine.Engine [generated in 0.00015s] {}
+2025-08-15 13:45:29,580 - sqlalchemy.engine.Engine - INFO - [generated in 0.00015s] {}
+2025-08-15 13:45:30,597 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:30,597 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:30,597 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:30,597 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:30,597 INFO sqlalchemy.engine.Engine [cached since 1.018s ago] {}
+2025-08-15 13:45:30,597 - sqlalchemy.engine.Engine - INFO - [cached since 1.018s ago] {}
+2025-08-15 13:45:32,622 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:32,622 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:32,622 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:32,622 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:32,622 INFO sqlalchemy.engine.Engine [cached since 3.043s ago] {}
+2025-08-15 13:45:32,622 - sqlalchemy.engine.Engine - INFO - [cached since 3.043s ago] {}
+2025-08-15 13:45:33,641 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:33,641 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:33,642 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:33,642 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:33,642 INFO sqlalchemy.engine.Engine [cached since 4.062s ago] {}
+2025-08-15 13:45:33,642 - sqlalchemy.engine.Engine - INFO - [cached since 4.062s ago] {}
+2025-08-15 13:45:33,650 - error_collector - ERROR - {"timestamp": "2025-08-15T13:45:33.649984", "level": "warning", "category": "system", "message": "服务 database 已降级至 moderate 级别", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 414, in _apply_degradation_rules\n    await self._apply_degradation(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 461, in _apply_degradation\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+INFO:     Application startup complete.
+2025-08-15 13:45:34,669 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:45:34,669 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:45:34,670 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:45:34,670 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:45:34,670 INFO sqlalchemy.engine.Engine [cached since 5.09s ago] {}
+2025-08-15 13:45:34,670 - sqlalchemy.engine.Engine - INFO - [cached since 5.09s ago] {}
+2025-08-15 13:45:34,674 - error_collector - ERROR - {"timestamp": "2025-08-15T13:45:34.673918", "level": "warning", "category": "system", "message": "自动恢复成功: database - 服务 database 重启成功", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 417, in _monitor_loop\n    await self._apply_recovery_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 462, in _apply_recovery_rules\n    await self._execute_recovery_rule(rule, service_name, health)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/fault_recovery_service.py\", line 538, in _execute_recovery_rule\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}
+2025-08-15 13:45:34.675 | INFO     | app.main:add_request_id:151 - Request completed: GET /health Status: 200 Time: 1.012s ID: 7c8cec64-06df-4599-b91f-fa45d3cc9ab4
+INFO:     127.0.0.1:62148 - "GET /health HTTP/1.1" 200 OK
+2025-08-15 13:45:43.443 | INFO     | app.main:add_request_id:151 - Request completed: GET /api/v1/docs Status: 200 Time: 0.001s ID: e85996c8-35cc-456f-85b4-c1b9260fce3a
+INFO:     127.0.0.1:62262 - "GET /api/v1/docs HTTP/1.1" 200 OK
+2025-08-15 13:46:05,684 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:05,684 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:05,685 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:05,685 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:05,685 INFO sqlalchemy.engine.Engine [cached since 36.11s ago] {}
+2025-08-15 13:46:05,685 - sqlalchemy.engine.Engine - INFO - [cached since 36.11s ago] {}
+2025-08-15 13:46:06,694 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:06,694 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:06,695 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:06,695 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:06,695 INFO sqlalchemy.engine.Engine [cached since 37.12s ago] {}
+2025-08-15 13:46:06,695 - sqlalchemy.engine.Engine - INFO - [cached since 37.12s ago] {}
+2025-08-15 13:46:08,708 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:08,708 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:08,708 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:08,708 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:08,708 INFO sqlalchemy.engine.Engine [cached since 39.13s ago] {}
+2025-08-15 13:46:08,708 - sqlalchemy.engine.Engine - INFO - [cached since 39.13s ago] {}
+2025-08-15 13:46:09,730 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:09,730 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:09,731 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:09,731 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:09,731 INFO sqlalchemy.engine.Engine [cached since 40.15s ago] {}
+2025-08-15 13:46:09,731 - sqlalchemy.engine.Engine - INFO - [cached since 40.15s ago] {}
+2025-08-15 13:46:40,755 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:40,755 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:40,756 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:40,756 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:40,756 INFO sqlalchemy.engine.Engine [cached since 71.18s ago] {}
+2025-08-15 13:46:40,756 - sqlalchemy.engine.Engine - INFO - [cached since 71.18s ago] {}
+2025-08-15 13:46:41,776 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:41,776 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:41,777 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:41,777 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:41,777 INFO sqlalchemy.engine.Engine [cached since 72.2s ago] {}
+2025-08-15 13:46:41,777 - sqlalchemy.engine.Engine - INFO - [cached since 72.2s ago] {}
+2025-08-15 13:46:43,795 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:43,795 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:43,795 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:43,795 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:43,795 INFO sqlalchemy.engine.Engine [cached since 74.22s ago] {}
+2025-08-15 13:46:43,795 - sqlalchemy.engine.Engine - INFO - [cached since 74.22s ago] {}
+2025-08-15 13:46:44,809 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:46:44,809 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:46:44,810 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:46:44,810 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:46:44,810 INFO sqlalchemy.engine.Engine [cached since 75.23s ago] {}
+2025-08-15 13:46:44,810 - sqlalchemy.engine.Engine - INFO - [cached since 75.23s ago] {}
+2025-08-15 13:47:15,832 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:15,832 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:15,833 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:15,833 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:15,834 INFO sqlalchemy.engine.Engine [cached since 106.3s ago] {}
+2025-08-15 13:47:15,834 - sqlalchemy.engine.Engine - INFO - [cached since 106.3s ago] {}
+2025-08-15 13:47:16,855 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:16,855 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:16,855 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:16,855 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:16,855 INFO sqlalchemy.engine.Engine [cached since 107.3s ago] {}
+2025-08-15 13:47:16,855 - sqlalchemy.engine.Engine - INFO - [cached since 107.3s ago] {}
+2025-08-15 13:47:18,872 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:18,872 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:18,872 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:18,872 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:18,873 INFO sqlalchemy.engine.Engine [cached since 109.3s ago] {}
+2025-08-15 13:47:18,873 - sqlalchemy.engine.Engine - INFO - [cached since 109.3s ago] {}
+2025-08-15 13:47:19,887 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:19,887 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:19,888 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:19,888 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:19,888 INFO sqlalchemy.engine.Engine [cached since 110.3s ago] {}
+2025-08-15 13:47:19,888 - sqlalchemy.engine.Engine - INFO - [cached since 110.3s ago] {}
+2025-08-15 13:47:50,919 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:50,919 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:50,920 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:50,920 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:50,921 INFO sqlalchemy.engine.Engine [cached since 141.3s ago] {}
+2025-08-15 13:47:50,921 - sqlalchemy.engine.Engine - INFO - [cached since 141.3s ago] {}
+2025-08-15 13:47:51,934 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:51,934 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:51,935 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:51,935 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:51,935 INFO sqlalchemy.engine.Engine [cached since 142.4s ago] {}
+2025-08-15 13:47:51,935 - sqlalchemy.engine.Engine - INFO - [cached since 142.4s ago] {}
+2025-08-15 13:47:53,959 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:53,959 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:53,959 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:53,959 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:53,959 INFO sqlalchemy.engine.Engine [cached since 144.4s ago] {}
+2025-08-15 13:47:53,959 - sqlalchemy.engine.Engine - INFO - [cached since 144.4s ago] {}
+2025-08-15 13:47:54,977 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:47:54,977 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:47:54,977 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:47:54,977 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:47:54,977 INFO sqlalchemy.engine.Engine [cached since 145.4s ago] {}
+2025-08-15 13:47:54,977 - sqlalchemy.engine.Engine - INFO - [cached since 145.4s ago] {}
+2025-08-15 13:48:26,033 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:48:26,033 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:48:26,034 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:48:26,034 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:48:26,034 INFO sqlalchemy.engine.Engine [cached since 176.5s ago] {}
+2025-08-15 13:48:26,034 - sqlalchemy.engine.Engine - INFO - [cached since 176.5s ago] {}
+2025-08-15 13:48:27,051 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:48:27,051 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:48:27,051 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:48:27,051 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:48:27,051 INFO sqlalchemy.engine.Engine [cached since 177.5s ago] {}
+2025-08-15 13:48:27,051 - sqlalchemy.engine.Engine - INFO - [cached since 177.5s ago] {}
+2025-08-15 13:48:29,071 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:48:29,071 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:48:29,072 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:48:29,072 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:48:29,072 INFO sqlalchemy.engine.Engine [cached since 179.5s ago] {}
+2025-08-15 13:48:29,072 - sqlalchemy.engine.Engine - INFO - [cached since 179.5s ago] {}
+2025-08-15 13:48:30,088 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-08-15 13:48:30,088 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2025-08-15 13:48:30,088 INFO sqlalchemy.engine.Engine SELECT 1
+2025-08-15 13:48:30,088 - sqlalchemy.engine.Engine - INFO - SELECT 1
+2025-08-15 13:48:30,088 INFO sqlalchemy.engine.Engine [cached since 180.5s ago] {}
+2025-08-15 13:48:30,088 - sqlalchemy.engine.Engine - INFO - [cached since 180.5s ago] {}
+2025-08-15 13:48:34,614 - error_collector - ERROR - {"timestamp": "2025-08-15T13:48:34.613906", "level": "warning", "category": "system", "message": "服务 database 已自动恢复正常", "exception_type": "CustomError", "stack_trace": "  File \"<string>\", line 1, in <module>\n    from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=5, pipe_handle=7)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 122, in spawn_main\n    exitcode = _main(fd, parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/spawn.py\", line 135, in _main\n    return self._bootstrap(parent_sentinel)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 313, in _bootstrap\n    self.run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py\", line 108, in run\n    self._target(*self._args, **self._kwargs)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py\", line 80, in subprocess_started\n    target(sockets=sockets)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/venv/lib/python3.13/site-packages/uvicorn/server.py\", line 67, in run\n    return asyncio.run(self.serve(sockets=sockets))\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 195, in run\n    return runner.run(main)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py\", line 118, in run\n    return self._loop.run_until_complete(task)\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 712, in run_until_complete\n    self.run_forever()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 683, in run_forever\n    self._run_once()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py\", line 2042, in _run_once\n    handle._run()\n  File \"/opt/homebrew/Cellar/python@3.13/3.13.5/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py\", line 89, in _run\n    self._context.run(self._callback, *self._args)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 344, in _monitoring_loop\n    await self._apply_degradation_rules()\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 418, in _apply_degradation_rules\n    await self._attempt_service_recovery(rule, service_status)\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/graceful_degradation_service.py\", line 502, in _attempt_service_recovery\n    error_logging_service.log_warning(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 409, in log_warning\n    return self.collector.collect_custom_error(\n  File \"/Users/zhongxuan/Desktop/demo3/qlib-web/backend/app/services/error_logging_service.py\", line 304, in collect_custom_error\n    stack_trace = ''.join(traceback.format_stack())\n", "request_id": null, "user_id": null, "endpoint": null, "method": null, "user_agent": null, "ip_address": null, "additional_context": {}}

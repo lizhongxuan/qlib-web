@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(touch:*)",
+      "Bash(chmod:*)",
+      "Bash(mysql:*)",
+      "Bash(brew services start:*)",
+      "Bash(sudo brew services start:*)",
+      "Bash(python3:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(mkdir:*)",
+      "Bash(python:*)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": []
+  }
+}

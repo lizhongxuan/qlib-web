@@ -14,7 +14,7 @@ class ExperimentTemplate(Base):
     """实验模板模型"""
     __tablename__ = "experiment_templates"
     
-    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    id = Column(String(255), primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String(200), nullable=False, index=True)
     description = Column(Text)
     category = Column(String(50), nullable=False, index=True)  # 模板分类: 预设/用户自定义
@@ -54,9 +54,9 @@ class TemplateUsage(Base):
     """模板使用记录"""
     __tablename__ = "template_usage"
     
-    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
-    template_id = Column(String, ForeignKey("experiment_templates.id"), nullable=False)
-    experiment_id = Column(String, ForeignKey("experiments.id"))
+    id = Column(String(255), primary_key=True, default=lambda: str(uuid.uuid4()))
+    template_id = Column(String(255), ForeignKey("experiment_templates.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"))
     
     # 使用信息
     user_id = Column(String(50))  # 用户ID (暂时用字符串，后续可扩展)
@@ -84,7 +84,7 @@ class TemplateCategory(Base):
     """模板分类"""
     __tablename__ = "template_categories"
     
-    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    id = Column(String(255), primary_key=True, default=lambda: str(uuid.uuid4()))
     name = Column(String(100), nullable=False, unique=True)
     display_name = Column(String(100), nullable=False)
     description = Column(Text)

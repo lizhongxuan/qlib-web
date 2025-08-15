@@ -18,14 +18,41 @@ import json
 import logging
 from datetime import datetime, timedelta
 
-# Qlib ML相关导入
-from qlib.contrib.model.gbdt import LGBModel
-from qlib.contrib.model.xgboost import XGBModel
-from qlib.contrib.model.catboost import CatBoostModel
-from qlib.contrib.model.pytorch_gru import GRUModel
-from qlib.contrib.model.pytorch_lstm import LSTMModel
-from qlib.contrib.model.pytorch_alstm import ALSTMModel
-from qlib.contrib.model.linear import LinearModel
+# Qlib ML相关导入（可选）
+try:
+    from qlib.contrib.model.gbdt import LGBModel
+except ImportError:
+    LGBModel = None
+
+try:
+    from qlib.contrib.model.xgboost import XGBModel
+except ImportError:
+    XGBModel = None
+
+try:
+    from qlib.contrib.model.catboost import CatBoostModel
+except ImportError:
+    CatBoostModel = None
+
+try:
+    from qlib.contrib.model.pytorch_gru import GRUModel
+except ImportError:
+    GRUModel = None
+
+try:
+    from qlib.contrib.model.pytorch_lstm import LSTMModel
+except ImportError:
+    LSTMModel = None
+
+try:
+    from qlib.contrib.model.pytorch_alstm import ALSTMModel
+except ImportError:
+    ALSTMModel = None
+
+try:
+    from qlib.contrib.model.linear import LinearModel
+except ImportError:
+    LinearModel = None
 
 # 特征选择和优化相关
 from sklearn.feature_selection import (

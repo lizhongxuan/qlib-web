@@ -3,7 +3,13 @@
 """
 from datetime import datetime
 from typing import Optional, List
-from pydantic import BaseModel, EmailStr, Field, validator
+from pydantic import BaseModel, EmailStr, Field
+try:
+    from pydantic import field_validator
+    PYDANTIC_V2 = True
+except ImportError:
+    from pydantic import validator
+    PYDANTIC_V2 = False
 from enum import Enum
 
 from ..models.user import UserRole, UserStatus
@@ -12,7 +18,7 @@ from ..models.user import UserRole, UserStatus
 # 基础用户信息
 class UserBase(BaseModel):
     """用户基础信息"""
-    username: str = Field(..., min_length=3, max_length=50, regex="^[a-zA-Z0-9_-]+$")
+    username: str = Field(..., min_length=3, max_length=50, pattern="^[a-zA-Z0-9_-]+$")
     email: EmailStr
     full_name: str = Field(..., min_length=1, max_length=100)
     avatar_url: Optional[str] = None
@@ -28,21 +34,40 @@ class UserCreate(UserBase):
     password: str = Field(..., min_length=8, max_length=50)
     confirm_password: str = Field(..., min_length=8, max_length=50)
     
-    @validator('confirm_password')
-    def passwords_match(cls, v, values):
-        if 'password' in values and v != values['password']:
-            raise ValueError('密码不匹配')
-        return v
-    
-    @validator('password')
-    def password_complexity(cls, v):
-        if not any(c.isupper() for c in v):
-            raise ValueError('密码必须包含至少一个大写字母')
-        if not any(c.islower() for c in v):
-            raise ValueError('密码必须包含至少一个小写字母')
-        if not any(c.isdigit() for c in v):
-            raise ValueError('密码必须包含至少一个数字')
-        return v
+    if PYDANTIC_V2:
+        @field_validator('confirm_password')
+        @classmethod
+        def passwords_match(cls, v, info):
+            if 'password' in info.data and v != info.data['password']:
+                raise ValueError('密码不匹配')
+            return v
+        
+        @field_validator('password')
+        @classmethod
+        def password_complexity(cls, v):
+            if not any(c.isupper() for c in v):
+                raise ValueError('密码必须包含至少一个大写字母')
+            if not any(c.islower() for c in v):
+                raise ValueError('密码必须包含至少一个小写字母')
+            if not any(c.isdigit() for c in v):
+                raise ValueError('密码必须包含至少一个数字')
+            return v
+    else:
+        @validator('confirm_password')
+        def passwords_match(cls, v, values):
+            if 'password' in values and v != values['password']:
+                raise ValueError('密码不匹配')
+            return v
+        
+        @validator('password')
+        def password_complexity(cls, v):
+            if not any(c.isupper() for c in v):
+                raise ValueError('密码必须包含至少一个大写字母')
+            if not any(c.islower() for c in v):
+                raise ValueError('密码必须包含至少一个小写字母')
+            if not any(c.isdigit() for c in v):
+                raise ValueError('密码必须包含至少一个数字')
+            return v
 
 
 # 用户更新
@@ -63,21 +88,40 @@ class PasswordChange(BaseModel):
     new_password: str = Field(..., min_length=8, max_length=50)
     confirm_password: str = Field(..., min_length=8, max_length=50)
     
-    @validator('confirm_password')
-    def passwords_match(cls, v, values):
-        if 'new_password' in values and v != values['new_password']:
-            raise ValueError('新密码不匹配')
-        return v
-    
-    @validator('new_password')
-    def password_complexity(cls, v):
-        if not any(c.isupper() for c in v):
-            raise ValueError('密码必须包含至少一个大写字母')
-        if not any(c.islower() for c in v):
-            raise ValueError('密码必须包含至少一个小写字母')
-        if not any(c.isdigit() for c in v):
-            raise ValueError('密码必须包含至少一个数字')
-        return v
+    if PYDANTIC_V2:
+        @field_validator('confirm_password')
+        @classmethod
+        def passwords_match(cls, v, info):
+            if 'new_password' in info.data and v != info.data['new_password']:
+                raise ValueError('新密码不匹配')
+            return v
+        
+        @field_validator('new_password')
+        @classmethod
+        def password_complexity(cls, v):
+            if not any(c.isupper() for c in v):
+                raise ValueError('密码必须包含至少一个大写字母')
+            if not any(c.islower() for c in v):
+                raise ValueError('密码必须包含至少一个小写字母')
+            if not any(c.isdigit() for c in v):
+                raise ValueError('密码必须包含至少一个数字')
+            return v
+    else:
+        @validator('confirm_password')
+        def passwords_match(cls, v, values):
+            if 'new_password' in values and v != values['new_password']:
+                raise ValueError('新密码不匹配')
+            return v
+        
+        @validator('new_password')
+        def password_complexity(cls, v):
+            if not any(c.isupper() for c in v):
+                raise ValueError('密码必须包含至少一个大写字母')
+            if not any(c.islower() for c in v):
+                raise ValueError('密码必须包含至少一个小写字母')
+            if not any(c.isdigit() for c in v):
+                raise ValueError('密码必须包含至少一个数字')
+            return v
 
 
 class PasswordReset(BaseModel):
@@ -86,11 +130,19 @@ class PasswordReset(BaseModel):
     new_password: str = Field(..., min_length=8, max_length=50)
     confirm_password: str = Field(..., min_length=8, max_length=50)
     
-    @validator('confirm_password')
-    def passwords_match(cls, v, values):
-        if 'new_password' in values and v != values['new_password']:
-            raise ValueError('新密码不匹配')
-        return v
+    if PYDANTIC_V2:
+        @field_validator('confirm_password')
+        @classmethod
+        def passwords_match(cls, v, info):
+            if 'new_password' in info.data and v != info.data['new_password']:
+                raise ValueError('新密码不匹配')
+            return v
+    else:
+        @validator('confirm_password')
+        def passwords_match(cls, v, values):
+            if 'new_password' in values and v != values['new_password']:
+                raise ValueError('新密码不匹配')
+            return v
 
 
 # 登录相关

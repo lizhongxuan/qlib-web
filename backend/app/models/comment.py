@@ -21,7 +21,7 @@ class ExperimentComment(Base):
     __tablename__ = "experiment_comments"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     author_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     parent_id = Column(Integer, ForeignKey("experiment_comments.id"), nullable=True)  # 父评论ID，支持回复
     
@@ -80,7 +80,7 @@ class ExperimentLike(Base):
     __tablename__ = "experiment_likes"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 时间信息
@@ -99,7 +99,7 @@ class ExperimentFavorite(Base):
     __tablename__ = "experiment_favorites"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 收藏信息
@@ -151,7 +151,7 @@ class ExperimentRating(Base):
     __tablename__ = "experiment_ratings"
     
     id = Column(Integer, primary_key=True, index=True)
-    experiment_id = Column(String, ForeignKey("qlib_experiments.id"), nullable=False)
+    experiment_id = Column(String(255), ForeignKey("qlib_experiments.id"), nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     
     # 评分信息

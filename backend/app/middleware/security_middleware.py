@@ -11,8 +11,7 @@ from typing import Dict, List, Optional, Callable, Any
 from datetime import datetime, timedelta
 from collections import defaultdict, deque
 from fastapi import FastAPI, Request, Response, HTTPException, status
-from fastapi.middleware.base import BaseHTTPMiddleware
-from starlette.middleware.base import RequestResponseEndpoint
+from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 import jwt
 from passlib.context import CryptContext
 
@@ -228,9 +227,14 @@ class SecurityMiddleware(BaseHTTPMiddleware):
         
         # 不需要认证的路径
         self.public_paths = [
-            "/docs", "/openapi.json", "/favicon.ico",
+            "/", "/health", "/docs", "/openapi.json", "/favicon.ico",
+            "/api/v1/docs", "/api/v1/openapi.json", "/api/v1/redoc",
             "/api/v1/auth/login", "/api/v1/auth/register",
-            "/api/v1/monitoring/health"
+            "/api/v1/monitoring/health",
+            "/apm/dashboard", "/errors/dashboard", "/analytics/dashboard",
+            "/errors/recent", "/errors/statistics",
+            "/fault-recovery/dashboard", "/fault-recovery/services", "/fault-recovery/history",
+            "/degradation/dashboard", "/degradation/services", "/degradation/history"
         ]
     
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:

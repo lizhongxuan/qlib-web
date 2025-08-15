@@ -8,8 +8,8 @@ class Task(Base):
     """异步任务模型"""
     __tablename__ = f"{TABLE_PREFIX}tasks"
     
-    id = Column(String, primary_key=True, index=True)  # Celery任务ID
-    experiment_id = Column(String, nullable=False, index=True)  # 关联的实验ID
+    id = Column(String(255), primary_key=True, index=True)  # Celery任务ID
+    experiment_id = Column(String(255), nullable=False, index=True)  # 关联的实验ID
     
     # 任务信息
     task_type = Column(String(50), nullable=False)  # 任务类型：backtest, training等

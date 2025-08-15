@@ -130,7 +130,7 @@ class RiskAnalysisResult(BaseModel):
 # 特征重要性分析相关
 class FeatureImportanceConfig(BaseModel):
     """特征重要性分析配置"""
-    method: str = Field(default="shap", regex="^(shap|permutation|tree_importance)$")
+    method: str = Field(default="shap", pattern="^(shap|permutation|tree_importance)$")
     top_n_features: int = Field(default=20, ge=1, le=100)
     include_correlation: bool = Field(default=True)
     stability_analysis: bool = Field(default=True)
@@ -173,7 +173,7 @@ class CustomMetricBase(BaseModel):
     description: Optional[str] = None
     category: Optional[str] = None
     formula: str = Field(..., min_length=1)
-    formula_type: str = Field(default="python", regex="^(python|sql|javascript)$")
+    formula_type: str = Field(default="python", pattern="^(python|sql|javascript)$")
     variables: Optional[Dict[str, Any]] = None
     is_public: bool = Field(default=False)
 
