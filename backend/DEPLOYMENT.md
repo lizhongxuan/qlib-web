@@ -34,7 +34,7 @@
 3. **启动服务**
    ```bash
    source venv/bin/activate
-   python run.py
+   python -m app.main
    ```
 
 ### 方法二：手动部署
@@ -94,8 +94,20 @@ python test_connection.py
 #### 7. 启动服务
 
 ```bash
-python run.py
+python -m app.main
 ```
+
+## 应用入口
+
+**主要入口文件**: `app/main.py`
+
+该文件包含了完整的FastAPI应用程序配置、中间件设置、生命周期管理等。可以直接通过以下命令启动：
+
+```bash
+python -m app.main
+```
+
+**注意**: 已删除多余的 `run.py` 入口文件，统一使用 `app/main.py` 作为唯一启动入口。
 
 ## 配置说明
 
@@ -181,8 +193,7 @@ backend/
 ├── .env                   # 环境变量
 ├── requirements.txt       # Python依赖
 ├── deploy.sh             # 部署脚本
-├── test_connection.py    # 连接测试
-└── run.py                # 启动脚本
+└── test_connection.py    # 连接测试
 ```
 
 ## 常见问题
@@ -253,7 +264,7 @@ python -c "import qlib; qlib.init(provider_uri='~/.qlib/qlib_data/cn_data', regi
 ```bash
 export DEBUG=true
 export LOG_LEVEL=DEBUG
-python run.py
+python -m app.main
 ```
 
 ### 2. 热重载

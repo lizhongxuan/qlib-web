@@ -14,7 +14,7 @@
 ## 技术栈
 
 - **框架**: FastAPI + SQLAlchemy + Alembic
-- **数据库**: SQLite (开发) / PostgreSQL (生产)
+- **数据库**: MySQL (开发和生产)
 - **缓存**: Redis
 - **任务队列**: Celery
 - **量化框架**: Qlib
@@ -36,7 +36,6 @@ backend/
 │   └── main.py         # 应用入口
 ├── tests/              # 测试文件
 ├── requirements.txt    # 依赖列表
-└── run.py             # 启动脚本
 ```
 
 ## 快速开始
@@ -44,8 +43,8 @@ backend/
 ### 环境要求
 
 - Python 3.8+
-- Redis (可选，开发环境)
-- PostgreSQL (生产环境)
+- MySQL 5.7+
+- Redis (推荐，用于缓存和任务队列)
 
 ### 安装依赖
 
@@ -78,8 +77,8 @@ python -c "from app.core.database import init_db; init_db()"
 ### 启动服务
 
 ```bash
-# 开发模式
-python run.py
+# 启动服务
+python -m app.main
 
 # 或者使用uvicorn直接启动
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
@@ -180,7 +179,7 @@ docker build -t qlib-web-backend .
 
 # 运行容器
 docker run -d -p 8000:8000 \
-  -e DATABASE_URL=postgresql://user:pass@localhost/qlib_web \
+  -e DATABASE_URL=mysql+pymysql://user:pass@localhost:3306/qlib_web \
   -e REDIS_URL=redis://localhost:6379/0 \
   qlib-web-backend
 ```
@@ -189,8 +188,8 @@ docker run -d -p 8000:8000 \
 
 生产环境需要配置以下环境变量：
 
-- `DATABASE_URL`: 数据库连接URL
-- `REDIS_URL`: Redis连接URL
+- `DATABASE_URL`: MySQL数据库连接URL
+- `REDIS_URL`: Redis连接URL  
 - `SECRET_KEY`: JWT密钥
 - `QLIB_DATA_PATH`: Qlib数据路径
 
@@ -242,7 +241,7 @@ docker run -d -p 8000:8000 \
 ```bash
 export DEBUG=True
 export LOG_LEVEL=DEBUG
-python run.py
+python -m app.main
 ```
 
 ## 贡献指南
